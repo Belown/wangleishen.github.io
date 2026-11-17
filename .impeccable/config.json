@@ -7,7 +7,7 @@
         "rule": "broken-image",
         "value": "*",
         "files": [
-          "sites/garden/src/pages/Section.tsx"
+          "archive/garden/src/pages/Section.tsx"
         ],
         "createdAt": "2026-11-16T23:25:37.897Z",
         "reason": "Claude: <Img file=…> is the project's placeholder component; it renders a labelled placeholder until the asset exists in src/assets"
@@ -16,7 +16,7 @@
         "rule": "broken-image",
         "value": "*",
         "files": [
-          "sites/garden/src/pages/WorkPage.tsx"
+          "archive/garden/src/pages/WorkPage.tsx"
         ],
         "createdAt": "2026-11-16T23:25:38.123Z",
         "reason": "Claude: <Img file=…> is the project's placeholder component; it renders a labelled placeholder until the asset exists in src/assets"
@@ -25,7 +25,7 @@
         "rule": "broken-image",
         "value": "*",
         "files": [
-          "sites/garden/src/pages/About.tsx"
+          "archive/garden/src/pages/About.tsx"
         ],
         "createdAt": "2026-11-16T23:25:38.360Z",
         "reason": "Claude: <Img file=…> is the project's placeholder component; it renders a labelled placeholder until the asset exists in src/assets"
@@ -34,7 +34,7 @@
         "rule": "broken-image",
         "value": "*",
         "files": [
-          "sites/_core/src/media.tsx"
+          "archive/_core/src/media.tsx"
         ],
         "createdAt": "2026-11-17T01:33:33.160Z",
         "reason": "Claude: <Img>/<Gallery> are the placeholder components; they render a labelled placeholder until the asset exists"
@@ -43,7 +43,7 @@
         "rule": "broken-image",
         "value": "*",
         "files": [
-          "sites/room/src/media.tsx"
+          "archive/room/src/media.tsx"
         ],
         "createdAt": "2026-11-17T01:33:33.393Z",
         "reason": "Claude: <Img>/<Gallery> are the placeholder components; they render a labelled placeholder until the asset exists"
@@ -52,7 +52,7 @@
         "rule": "broken-image",
         "value": "*",
         "files": [
-          "sites/sleeve/src/media.tsx"
+          "archive/sleeve/src/media.tsx"
         ],
         "createdAt": "2026-11-17T01:33:33.619Z",
         "reason": "Claude: <Img>/<Gallery> are the placeholder components; they render a labelled placeholder until the asset exists"
@@ -61,7 +61,7 @@
         "rule": "broken-image",
         "value": "*",
         "files": [
-          "sites/metro/src/media.tsx"
+          "archive/metro/src/media.tsx"
         ],
         "createdAt": "2026-11-17T01:33:33.846Z",
         "reason": "Claude: <Img>/<Gallery> are the placeholder components; they render a labelled placeholder until the asset exists"
@@ -70,10 +70,118 @@
         "rule": "broken-image",
         "value": "*",
         "files": [
-          "sites/metro/src/pages.tsx"
+          "archive/metro/src/pages.tsx"
         ],
         "createdAt": "2026-11-17T01:51:40.352Z",
         "reason": "Claude: <Img> is the placeholder component; it renders a labelled placeholder until the asset exists"
+      },
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "archive/previews/b-studio.html"
+        ],
+        "createdAt": "2026-11-17T10:08:52.817Z",
+        "reason": "Claude: nav uses mix-blend-mode:difference and hero text sits over the dark hero, portrait caption sits below the figure; static detector reads them against the page paper"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "archive/previews/b-studio.html"
+        ],
+        "createdAt": "2026-11-17T10:10:32.683Z",
+        "reason": "Claude: hero text is absolutely inset 40-44px from edges; detector reads the wrapper only"
+      },
+      {
+        "rule": "overused-font",
+        "value": "montserrat",
+        "files": [
+          "archive/previews/b-studio.html"
+        ],
+        "createdAt": "2026-11-17T10:10:32.835Z",
+        "reason": "Claude: deliberately echoes the reference site bobtianqiwei.com the user named"
+      },
+      {
+        "rule": "overused-font",
+        "value": "*",
+        "files": [
+          "archive/previews/c-ledger.html"
+        ],
+        "createdAt": "2026-11-17T10:10:32.993Z",
+        "reason": "Claude: preview-stage font choice, revisit when a direction is picked"
+      },
+      {
+        "rule": "repeating-stripes-gradient",
+        "value": "*",
+        "files": [
+          "archive/previews/d-gallery.html"
+        ],
+        "createdAt": "2026-11-17T10:10:33.138Z",
+        "reason": "Claude: gradient is a stand-in for a project photo, not decoration"
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "archive/previews/d-gallery.html"
+        ],
+        "createdAt": "2026-11-17T10:10:33.287Z",
+        "reason": "Claude: 12/13px are uppercase micro-labels by design in the gallery direction"
+      },
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "archive/previews/e-studio-gallery.html"
+        ],
+        "createdAt": "2026-11-17T10:14:30.561Z",
+        "reason": "Claude: same as b-studio; blend-mode nav, text over dark hero, caption below portrait"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "archive/previews/e-studio-gallery.html"
+        ],
+        "createdAt": "2026-11-17T10:14:30.717Z",
+        "reason": "Claude: hero text absolutely inset 40-44px"
+      },
+      {
+        "rule": "overused-font",
+        "value": "montserrat",
+        "files": [
+          "archive/previews/e-studio-gallery.html"
+        ],
+        "createdAt": "2026-11-17T10:14:30.864Z",
+        "reason": "Claude: echoes bobtianqiwei.com, the user's named reference"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/Home.tsx"
+        ],
+        "createdAt": "2026-11-17T10:25:25.466Z",
+        "reason": "Claude: <Img>/asset() render a labelled placeholder until the file exists in src/assets (same exception as the other sites)"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/pages.tsx"
+        ],
+        "createdAt": "2026-11-17T10:25:25.624Z",
+        "reason": "Claude: <Img>/asset() render a labelled placeholder until the file exists in src/assets (same exception as the other sites)"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/media.tsx"
+        ],
+        "createdAt": "2026-11-17T10:25:25.781Z",
+        "reason": "Claude: <Img>/asset() render a labelled placeholder until the file exists in src/assets (same exception as the other sites)"
       }
     ]
   }

@@ -1,0 +1,180 @@
+:root {
+  --ink: #121212;
+  --paper: #fafaf8;
+  --mute: #62625c;
+  --rule: #e4e4df;
+  --dark: #0d0d0d;
+  --tile: #efeee9;
+  --head: 'Montserrat', 'Noto Sans SC', system-ui, sans-serif;
+  --body: 'Archivo', 'Noto Sans SC', system-ui, sans-serif;
+  --mono: ui-monospace, 'SF Mono', Consolas, monospace;
+  --pad: 44px;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+* { box-sizing: border-box }
+html { scroll-behavior: smooth; scroll-padding-top: 96px }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.65 var(--body); -webkit-font-smoothing: antialiased }
+a { color: inherit }
+h1, h2, h3 { margin: 0; font-weight: 500 }
+img, video { display: block; max-width: 100% }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 3px }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: var(--paper); padding: 8px 12px; z-index: 20 }
+.skip:focus { left: 8px }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 var(--pad) }
+.eyebrow { font: 500 12px var(--head); letter-spacing: .2em; text-transform: uppercase; color: var(--mute); margin: 0 0 24px }
+.lede { font: 500 clamp(22px, 2.4vw, 30px)/1.3 var(--head); letter-spacing: -.01em; margin: 0 0 28px; max-width: 30ch }
+.fill { border-bottom: 1px dashed currentColor; opacity: .7 }
+.bi-sec { display: block; font-size: .82em; color: var(--mute); font-weight: 400 }
+.zh { font-family: 'Noto Sans SC', sans-serif; font-weight: 400 }
+
+/* nav: difference blend keeps it legible over the dark hero and the light pages */
+.nav { position: fixed; inset: 0 0 auto; z-index: 10; display: flex; align-items: center; gap: 40px; padding: 26px var(--pad); color: #fff; mix-blend-mode: difference }
+.mark { font: 600 15px var(--head); letter-spacing: .32em; text-decoration: none; margin-right: auto }
+.nav nav { display: flex; gap: 36px }
+.nav nav a, .lang button { font: 500 12px var(--head); letter-spacing: .14em; text-transform: uppercase; text-decoration: none; opacity: .7 }
+.nav nav a:hover, .nav nav a[aria-current] { opacity: 1 }
+.lang { display: flex; gap: 2px }
+.lang button { background: none; border: 0; color: inherit; padding: 4px 6px; cursor: pointer; letter-spacing: .06em }
+.lang button[aria-pressed='true'] { opacity: 1; box-shadow: inset 0 -1px 0 currentColor }
+
+/* hero */
+.hero { position: relative; height: 100vh; height: 100svh; min-height: 520px; overflow: hidden; background: var(--dark); color: #fff }
+.hero .media { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .85 }
+.stand-in { inset: -10% !important; width: auto !important; height: auto !important; display: grid; place-items: center;
+  background: radial-gradient(38% 46% at 50% 52%, #e9e6e0 0 40%, #bdb8ae 55%, transparent 72%), #111; animation: drift 18s ease-in-out infinite alternate }
+.stand-in code { font: 11px var(--mono); color: #57554f; letter-spacing: .04em }
+@keyframes drift { to { transform: scale(1.06) translate(-1.5%, 1%) } }
+@media (prefers-reduced-motion: reduce) { .stand-in { animation: none } }
+.hero .id { position: absolute; left: var(--pad); right: var(--pad); bottom: 40px; display: flex; justify-content: space-between; align-items: flex-end; gap: 24px }
+.hero h1 { font: 500 clamp(40px, 6vw, 76px)/1.02 var(--head); letter-spacing: -.01em; text-shadow: 0 1px 30px #0006 }
+.hero p { margin: 10px 0 0; font: 400 15px var(--head); letter-spacing: .03em; opacity: .85 }
+.scroll { font: 500 11px var(--head); letter-spacing: .2em; text-transform: uppercase; text-decoration: none; opacity: .65 }
+
+/* about */
+.about { display: grid; grid-template-columns: 1.4fr 1fr; gap: 80px; padding: 120px 0 100px; align-items: start }
+.about p { margin: 0 0 16px; color: #3b3b38; max-width: 60ch }
+.about .lede { color: var(--ink) }
+.links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px }
+.links a { font: 500 13px var(--head); letter-spacing: .03em; text-decoration: none; padding: 12px 18px; box-shadow: inset 0 0 0 1px var(--rule); transition: box-shadow .2s }
+.links a:first-child { background: var(--ink); color: var(--paper); box-shadow: none }
+.links a:hover { box-shadow: inset 0 0 0 1px var(--ink) }
+.about-page { padding-top: 150px }
+.title { font: 500 clamp(36px, 5vw, 64px)/1.05 var(--head); letter-spacing: -.015em; margin-bottom: 20px }
+
+/* work grid */
+.work-sec { border-top: 1px solid var(--rule); padding: 96px 0 120px }
+.ghead { display: flex; flex-direction: column; gap: 28px; margin-bottom: 36px }
+.big { font: 700 clamp(40px, 5.5vw, 80px)/.95 var(--body); letter-spacing: -.035em; text-transform: uppercase; white-space: nowrap }
+.chips { display: flex; gap: 8px 28px; flex-wrap: wrap }
+.chips button { font: 500 12px var(--head); letter-spacing: .14em; text-transform: uppercase; background: none; border: 0; padding: 4px 0; color: var(--mute); cursor: pointer }
+.chips button:hover { color: var(--ink) }
+.chips button[aria-pressed='true'] { color: var(--ink); box-shadow: inset 0 -1px 0 var(--ink) }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; list-style: none; margin: 0; padding: 0 }
+.tile { position: relative; display: block; aspect-ratio: 5/3; overflow: hidden; background: var(--tile); text-decoration: none }
+.tile .img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease) }
+.tile:hover .img { transform: scale(1.04) }
+.tile span.img { display: grid; place-items: start; padding: 10px 12px }
+.tile span.img code { font: 10px var(--mono); color: #0007; mix-blend-mode: luminosity }
+.tile .cap { position: absolute; inset: auto 0 0; padding: 36px 16px 14px; background: linear-gradient(transparent, #000b); color: #fff; opacity: 0; transition: opacity .25s }
+.tile:hover .cap, .tile:focus-visible .cap { opacity: 1 }
+.tile .cap b { display: block; font: 500 14px var(--body); letter-spacing: .06em; text-transform: uppercase }
+.tile .cap > span { font: 400 13px var(--head); opacity: .85 }
+@media (prefers-reduced-motion: reduce) { .tile .img, .tile .cap { transition: none } }
+@media (hover: none) { .tile .cap { opacity: 1 } }
+.tone0 { background: radial-gradient(circle, #fff 0 18%, #f3d6e4 19% 30%, var(--tile) 31%) }
+.tone1 { background: linear-gradient(90deg, var(--tile) 20%, #c8dcf6 25%, #e2c8f0 30%, var(--tile) 35% 45%, #c8dcf6 50%, #e2c8f0 55%, var(--tile) 60% 70%, #c8dcf6 75%, #e2c8f0 80%, var(--tile) 85%) }
+.tone2 { background: linear-gradient(160deg, #e9e6f1, #c5bfd6) }
+.tone3 { background: linear-gradient(180deg, #3d3d3d, #9b9890) }
+.tone4 { background: linear-gradient(90deg, #3a3a38 50%, #8f4b3c 50%) }
+.tone5 { background: linear-gradient(135deg, #d7d3cb, #b9b4aa) }
+.tone6 { background: linear-gradient(180deg, #1f3a6b, #5b79a8 70%, #7d6d5c 70%) }
+.tone7 { background: radial-gradient(120% 90% at 50% 0, #e7e4df, #8b8780) }
+.tone8 { background: radial-gradient(circle at 50% 60%, #bcb8ae 0 30%, #77736b 31% 55%, #4a4741 56%) }
+
+/* two-column sections: news, cv, publications, people */
+.split { display: grid; grid-template-columns: 280px 1fr; gap: 56px; padding: 80px 0; border-top: 1px solid var(--rule) }
+.split h2 { font: 500 24px var(--head); text-transform: uppercase; letter-spacing: .02em }
+.news-list, .rows { list-style: none; margin: 0; padding: 0 }
+.news-list li, .rows li { display: grid; grid-template-columns: 130px 1fr; gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--rule) }
+.news-list li:first-child, .rows li:first-child { padding-top: 0 }
+.news-list time, .when { color: var(--mute); font: 400 14px/1.9 var(--head) }
+.news-list a, .rows a { text-decoration: none; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size .3s var(--ease) }
+.news-list a:hover, .rows a:hover { background-size: 100% 1px }
+.rows b { font-weight: 500 }
+.rows .sum { display: block; color: #3b3b38 }
+.rows small, .people small { display: block; color: var(--mute); font-size: 14px; line-height: 1.5; margin-top: 4px }
+.more { display: inline-block; margin-top: 20px; font: 500 12px var(--head); letter-spacing: .14em; text-transform: uppercase; text-decoration: none }
+.people { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 28px 24px; list-style: none; margin: 0; padding: 0 }
+.people a { text-underline-offset: 3px }
+
+/* work page */
+.page { padding-bottom: 80px; min-height: 80vh }
+.page-head { padding-top: 140px; padding-bottom: 40px }
+.back { display: inline-block; margin-bottom: 48px; font: 500 12px var(--head); letter-spacing: .14em; text-transform: uppercase; text-decoration: none; color: var(--mute) }
+.back:hover { color: var(--ink) }
+.page-head .lede { max-width: 40ch; color: #3b3b38; font-weight: 400 }
+.facts { display: flex; flex-wrap: wrap; gap: 20px 48px; margin: 36px 0 0; padding-top: 24px; border-top: 1px solid var(--rule) }
+.facts dt { font: 500 11px var(--head); letter-spacing: .16em; text-transform: uppercase; color: var(--mute) }
+.facts dd { margin: 4px 0 0; font-size: 15px }
+.cover { margin-bottom: 64px }
+.prose { max-width: 820px }
+.prose > p, .para-pair { max-width: 64ch; margin: 0 0 20px }
+.para-pair p { margin: 0 0 6px } .para-pair p[lang='en'] { color: var(--mute) }
+.prose h2 { font: 500 24px var(--head); margin: 48px 0 16px }
+.pager { display: flex; justify-content: space-between; gap: 24px; margin-top: 80px; padding-top: 28px; border-top: 1px solid var(--rule) }
+.pager a { text-decoration: none; font: 500 18px var(--head) }
+.pager small { display: block; font: 500 11px var(--head); letter-spacing: .16em; text-transform: uppercase; color: var(--mute); margin-bottom: 4px }
+.pager .next { text-align: right }
+
+/* media blocks (shared media.tsx) */
+.fig { margin: 0 0 32px }
+.fig img, .video { width: 100%; object-fit: cover }
+.cap { font-size: 13px; color: var(--mute); margin-top: 8px }
+.about .cap, .about-page .cap { text-align: center }
+.ph { position: relative; width: 100%; background: linear-gradient(160deg, #dedad2, #b5afa4); display: grid; place-items: center; color: #3b3a36 }
+.ph-tag { position: absolute; left: 12px; bottom: 10px; display: flex; flex-direction: column; font: 11px/1.4 var(--mono) }
+.ph-path { opacity: .75 }
+.ph-mid { display: flex; align-items: center; gap: 8px; font: 500 13px var(--head) }
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px }
+.audio { display: grid; gap: 8px; padding: 18px 20px; margin: 0 0 32px; box-shadow: inset 0 0 0 1px var(--rule) }
+.audio-title { font: 500 15px var(--head) }
+.audio audio { width: 100% }
+.audio-ph { display: flex; align-items: center; gap: 8px; color: var(--mute); font-size: 14px }
+.pdf { display: flex; gap: 20px; align-items: center; padding: 18px 20px; margin: 0 0 32px; box-shadow: inset 0 0 0 1px var(--rule) }
+.pdf-sheet { width: 44px; aspect-ratio: 3/4; background: #fff; box-shadow: 0 0 0 1px var(--rule); display: grid; align-content: start; gap: 3px; padding: 6px 5px }
+.pdf-sheet i { height: 2px; background: var(--rule) }
+.pdf-info { display: grid; gap: 2px; font-size: 14px }
+.pdf-info span { color: var(--mute) }
+.embed { padding: 18px 20px; margin: 0 0 32px; background: var(--tile); display: grid; gap: 4px }
+.embed span { color: var(--mute); font-size: 14px }
+.quote { margin: 40px 0; padding-left: 24px; border-left: 2px solid var(--ink); font: 500 22px/1.4 var(--head) }
+.quote cite { display: block; margin-top: 10px; font: 400 13px var(--body); color: var(--mute); font-style: normal }
+code { font-family: var(--mono); font-size: .85em }
+.icon { flex: none }
+
+/* footer */
+.foot { background: var(--dark); color: #a3a39e; padding: 44px var(--pad); display: flex; flex-wrap: wrap; gap: 12px 40px; font: 400 13px var(--head); letter-spacing: .03em }
+.foot b { color: #fff; font-weight: 500; margin-right: auto }
+.foot a { text-decoration: none }
+.foot a:hover { color: #fff }
+
+@media (max-width: 860px) {
+  :root { --pad: 20px }
+  .nav { gap: 16px; padding: 18px var(--pad) }
+  .nav nav { gap: 16px }
+  .nav nav a:first-child, .nav nav a:nth-child(4) { display: none }
+  .scroll { display: none }
+  .about, .split { grid-template-columns: 1fr; gap: 28px }
+  .about { padding: 72px 0 }
+  .about .fig { max-width: 280px }
+  .about-page { padding-top: 110px }
+  .work-sec { padding: 64px 0 80px }
+  .chips { gap: 8px 18px }
+  .grid { grid-template-columns: 1fr 1fr; gap: 10px }
+  .tile .cap { padding: 20px 10px 8px }
+  .tile .cap b { font-size: 12px }
+  .split { padding: 56px 0 }
+  .news-list li, .rows li { grid-template-columns: 1fr; gap: 2px }
+  .page-head { padding-top: 100px }
+}

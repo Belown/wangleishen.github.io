@@ -8,7 +8,7 @@ web
 
 ## Users
 
-Primarily the owner and their friends. The site is personal expression first: a place to keep and show what the owner makes, and for friends to browse it. Admissions committees, employers and collaborators are not the target; any of them may visit, but nothing should be optimised for them at the expense of the personal character.
+Public and professional first: professors and prospective advisors, collaborators, recruiters and LinkedIn contacts, people met at conferences. Friends still visit, and the personal practice (music, photography, writing) stays visible, but the first impression must read as credible and current: who the owner is, where they work, what they have published, how to reach them. Reference for the balance: bobtianqiwei.com. (Changed 2026-11-17 from a friends-first audience.)
 
 ## Product Purpose
 
@@ -22,7 +22,7 @@ One person's whole practice in one place, research next to music next to essays,
 
 - Content is bilingual: Chinese and English, with the main content available in both and a way to switch.
 - The owner will keep adding work over time, so adding a project, post, photo or recording must stay easy.
-- Existing build: a Vite + React + TypeScript app in this folder (`src/`), with placeholder content in `src/content/` and a drop-in asset folder at `src/assets/`. A second experimental copy lives in `bogujia/`.
+- Existing build: a Vite + React + TypeScript app at the repo root (`src/`). All content is in `src/content.ts`; files drop into `src/assets/`. Earlier design directions are kept in `archive/`.
 
 ## Capabilities and Constraints
 
