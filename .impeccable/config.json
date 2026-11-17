@@ -1,0 +1,80 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "sites/garden/src/pages/Section.tsx"
+        ],
+        "createdAt": "2026-11-16T23:25:37.897Z",
+        "reason": "Claude: <Img file=…> is the project's placeholder component; it renders a labelled placeholder until the asset exists in src/assets"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "sites/garden/src/pages/WorkPage.tsx"
+        ],
+        "createdAt": "2026-11-16T23:25:38.123Z",
+        "reason": "Claude: <Img file=…> is the project's placeholder component; it renders a labelled placeholder until the asset exists in src/assets"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "sites/garden/src/pages/About.tsx"
+        ],
+        "createdAt": "2026-11-16T23:25:38.360Z",
+        "reason": "Claude: <Img file=…> is the project's placeholder component; it renders a labelled placeholder until the asset exists in src/assets"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "sites/_core/src/media.tsx"
+        ],
+        "createdAt": "2026-11-17T01:33:33.160Z",
+        "reason": "Claude: <Img>/<Gallery> are the placeholder components; they render a labelled placeholder until the asset exists"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "sites/room/src/media.tsx"
+        ],
+        "createdAt": "2026-11-17T01:33:33.393Z",
+        "reason": "Claude: <Img>/<Gallery> are the placeholder components; they render a labelled placeholder until the asset exists"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "sites/sleeve/src/media.tsx"
+        ],
+        "createdAt": "2026-11-17T01:33:33.619Z",
+        "reason": "Claude: <Img>/<Gallery> are the placeholder components; they render a labelled placeholder until the asset exists"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "sites/metro/src/media.tsx"
+        ],
+        "createdAt": "2026-11-17T01:33:33.846Z",
+        "reason": "Claude: <Img>/<Gallery> are the placeholder components; they render a labelled placeholder until the asset exists"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "sites/metro/src/pages.tsx"
+        ],
+        "createdAt": "2026-11-17T01:51:40.352Z",
+        "reason": "Claude: <Img> is the placeholder component; it renders a labelled placeholder until the asset exists"
+      }
+    ]
+  }
+}

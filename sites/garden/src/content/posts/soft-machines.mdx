@@ -1,0 +1,52 @@
+export const meta = {
+  title: 'Soft machines, hard feelings',
+  date: '2026-10-02',
+  read: 7,
+  tags: ['research', 'haptics'],
+  lede: 'Most interfaces are hard: glass, aluminium, buttons that click. This is a note on what changes when the machine is soft enough to hold you back.',
+}
+
+When I started working with silicone, I expected to learn about materials. I learned more about patience. A soft actuator takes four seconds to fill, and in those four seconds you notice your own breathing.<sup><a className="fnref" href="#fn-1">1</a></sup>
+
+### Hard by default
+
+Almost everything we touch on a screen is designed to stay the same under the finger. That is useful, and it is also lonely. Nothing pushes back, nothing gives way.
+
+<Img file="journal/soft-machines/hero.jpg" note="Wide photo: the actuator array on the bench" caption="The second Softfold prototype, half inflated." />
+
+Soft interfaces change the question from “did it register?” to “how did it feel?”. That is a harder question to put in a results table.<sup><a className="fnref" href="#fn-2">2</a></sup>
+
+<Quote cite="Lab notebook, March 2026">A machine that can be squeezed is a machine that can be comforted.</Quote>
+
+### What softness asks of us
+
+It asks for slower studies, longer sessions and more tea. It asks us to report hesitation as data. Here is the memo I recorded on the night the first sleeve worked:
+
+<Track id="voice-memo" />
+
+<Gallery folder="journal/soft-machines" name="detail" count={3} ratio="1/1" caption="Details: cast, valve, finished sleeve." />
+
+<Video file="journal/soft-machines/demo.mp4" duration="0:42" note="Demo clip with sound" caption="Squeeze, hold and release." />
+
+The control loop is almost embarrassingly simple:
+
+```cpp
+// hold pressure when the wearer squeezes back
+if (squeeze > THRESHOLD) {
+  valve.close();
+  pump.setPressure(HOLD_KPA);
+} else {
+  pump.setPressure(REST_KPA);
+}
+```
+
+<Embed service="Figma" abbr="Fg" title="Softfold interaction map" note="view-only file" />
+
+<Pdf file="journal/soft-machines/slides.pdf" title="Slides from the lab talk" pages={32} />
+
+I do not know yet where this goes. I do know that I want to keep making things you can hold.
+
+<ol className="fn">
+  <li id="fn-1">Four seconds is the fill time at 20 kPa with our pump. A larger pump makes it faster, and much less pleasant.</li>
+  <li id="fn-2">See the CHI 2026 paper for the full study design.</li>
+</ol>
