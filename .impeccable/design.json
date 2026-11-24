@@ -1,0 +1,387 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-24T21:38:48+00:00",
+  "title": "Design System: Stage",
+  "extensions": {
+    "colorMeta": {
+      "warm-light": {
+        "role": "primary",
+        "displayName": "Lamp Warm",
+        "tonalRamp": [
+          "#2a2219",
+          "#4a3d2e",
+          "#6e5c46",
+          "#94805f",
+          "#b9a27f",
+          "#d9c4a3",
+          "#f0dcc0",
+          "#ffecd4"
+        ],
+        "canonical": "rgb(255 236 212)"
+      },
+      "stage": {
+        "role": "neutral",
+        "displayName": "Stage Black",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#1c1c1f",
+          "#2a2a2e",
+          "#3a3a3f",
+          "#6a6a70",
+          "#9a9aa0",
+          "#d8d8d6",
+          "#f2f2f0"
+        ]
+      },
+      "floor": {
+        "role": "neutral",
+        "displayName": "Lit Floor",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#1c1c1f",
+          "#2a2a2e",
+          "#3a3a3f",
+          "#6a6a70",
+          "#9a9aa0",
+          "#d8d8d6",
+          "#f2f2f0"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Warm White",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#1c1c1f",
+          "#2a2a2e",
+          "#3a3a3f",
+          "#6a6a70",
+          "#9a9aa0",
+          "#d8d8d6",
+          "#f2f2f0"
+        ]
+      },
+      "body": {
+        "role": "neutral",
+        "displayName": "Reading White",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#1c1c1f",
+          "#2a2a2e",
+          "#3a3a3f",
+          "#6a6a70",
+          "#9a9aa0",
+          "#d8d8d6",
+          "#f2f2f0"
+        ]
+      },
+      "dim": {
+        "role": "neutral",
+        "displayName": "Stage Grey",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#1c1c1f",
+          "#2a2a2e",
+          "#3a3a3f",
+          "#6a6a70",
+          "#9a9aa0",
+          "#d8d8d6",
+          "#f2f2f0"
+        ]
+      },
+      "hair": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#1c1c1f",
+          "#2a2a2e",
+          "#3a3a3f",
+          "#6a6a70",
+          "#9a9aa0",
+          "#d8d8d6",
+          "#f2f2f0"
+        ],
+        "canonical": "rgb(242 242 240 / 0.1)"
+      },
+      "matte-top": {
+        "role": "neutral",
+        "displayName": "Matte Panel (top)",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#1c1c1f",
+          "#2a2a2e",
+          "#3a3a3f",
+          "#6a6a70",
+          "#9a9aa0",
+          "#d8d8d6",
+          "#f2f2f0"
+        ]
+      },
+      "matte-base": {
+        "role": "neutral",
+        "displayName": "Matte Panel (base)",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#1c1c1f",
+          "#2a2a2e",
+          "#3a3a3f",
+          "#6a6a70",
+          "#9a9aa0",
+          "#d8d8d6",
+          "#f2f2f0"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Owner name on the home hero and 404; work titles use clamp(2.6rem, 1.7rem + 3.6vw, 5rem). zh: letter-spacing 0, line-height 1.08."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Self-introduction greeting."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Works index heading."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "The one short line under a display heading; max 18em."
+      },
+      "subhead": {
+        "displayName": "Subhead",
+        "purpose": "Section headings in case-study prose."
+      },
+      "row-title": {
+        "displayName": "Row title",
+        "purpose": "Work titles in the index; pager titles at 1.25rem."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "UI text."
+      },
+      "reading": {
+        "displayName": "Reading",
+        "purpose": "Long-form paragraphs in Reading White; 40rem measure."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Profile row headings (600), publications, contact, index summaries."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Captions, metadata, rail links, tags, citation links."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Placeholder file paths only."
+      }
+    },
+    "shadows": [
+      {
+        "name": "stage-drop",
+        "value": "0 2.5rem 3rem -2rem rgb(0 0 0 / 0.95), 0 0.75rem 1.5rem -0.5rem rgb(0 0 0 / 0.6)",
+        "purpose": "Hero piece standing in the light."
+      },
+      {
+        "name": "contact",
+        "value": "radial-gradient(closest-side, rgb(0 0 0 / 0.92), rgb(0 0 0 / 0)); 1.8rem tall, 0.9rem below the piece, blur(3px)",
+        "purpose": "Where the object meets the floor."
+      },
+      {
+        "name": "prose-drop",
+        "value": "0 1.75rem 2.5rem -1.5rem rgb(0 0 0 / 0.9)",
+        "purpose": "Figures inside a case study."
+      },
+      {
+        "name": "thumb-drop",
+        "value": "0 0.9rem 1rem -0.7rem rgb(0 0 0 / 0.95)",
+        "purpose": "Index thumbnails."
+      },
+      {
+        "name": "top-light-inset",
+        "value": "inset 0 1px 0 rgb(255 236 212 / 0.12)",
+        "purpose": "Top edge of placeholders (0.12) and media panels (0.08)."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state",
+        "value": "color 0.2s",
+        "purpose": "Hover and active colour changes on links, rail, filter, language switch, CV fill."
+      },
+      {
+        "name": "thumb-glow",
+        "value": "opacity 0.3s",
+        "purpose": "Warm glow on index thumbnail hover (0.6 to 1)."
+      },
+      {
+        "name": "light-swell",
+        "value": "linear; scroll(root); range 0px 100vh",
+        "purpose": "The light swells once (scale 1.14 x 1.1) and settles at 0.6."
+      },
+      {
+        "name": "pool-swell",
+        "value": "linear; view-timeline --hero; exit 0% to exit 70%",
+        "purpose": "Floor pool and catch-light swell (1.22 x 1.12) as the hero exits."
+      },
+      {
+        "name": "piece-dim",
+        "value": "linear; --hero; exit 5% to exit 70%",
+        "purpose": "Work dims to 0.3 opacity and brightness 0.5 and lifts 4vh; hero text and caption fade to 0.25 (exit 5% to 65%)."
+      },
+      {
+        "name": "rise",
+        "value": "linear; view(); entry 0% to entry 80%",
+        "purpose": "Profile heading rises 2.5rem. Heading only."
+      },
+      {
+        "name": "mast-ground",
+        "value": "linear; scroll(root); range 0 to 5rem",
+        "purpose": "Narrow sticky mast gains its stage ground."
+      },
+      {
+        "name": "gate",
+        "value": "@media (prefers-reduced-motion: no-preference) + @supports (animation-timeline: view())",
+        "purpose": "Wraps all scroll-driven motion; otherwise static and still lit."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "narrow",
+        "value": "max-width: 50rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Rail link",
+      "kind": "nav",
+      "refersTo": "rail-link",
+      "description": "Fixed bottom section rail; dim at rest, ink and underlined when current.",
+      "html": "<nav class=\"ds-rail\"><a href=\"#\">研究</a><a href=\"#\" class=\"on\">设计与工程</a><a href=\"#\">写作</a><a href=\"#\">关于</a></nav>",
+      "css": ".ds-rail{display:flex;gap:2rem;padding:0 1rem;background:var(--stage,#0b0b0c);font-family:var(--sans, \"Hanken Grotesk\", system-ui, sans-serif)} .ds-rail a{display:inline-block;padding:.6rem 0;font-size:.875rem;color:var(--dim,#9a9aa0);text-decoration:none;transition:color .2s} .ds-rail a:hover{color:var(--ink,#f2f2f0)} .ds-rail a.on{color:var(--ink,#f2f2f0);text-decoration:underline;text-underline-offset:.55em} .ds-rail a:focus-visible{outline:2px solid var(--ink,#f2f2f0);outline-offset:4px;border-radius:2px}"
+    },
+    {
+      "name": "Piece in the light",
+      "kind": "custom",
+      "refersTo": "placeholder",
+      "description": "Hero object: floor pool, contact shadow, downward drop, light down its face, catch-light on the top edge.",
+      "html": "<div class=\"ds-stage\"><div class=\"ds-piece\"><span class=\"ds-pool\"></span><span class=\"ds-catch\"></span><div class=\"ds-face\"></div></div></div>",
+      "css": ".ds-stage{background:#0b0b0c;padding:3rem 4rem 5rem;overflow:hidden} .ds-piece{position:relative;isolation:isolate;width:16rem;margin:0 auto} .ds-pool{position:absolute;z-index:-2;left:-34%;right:-34%;bottom:-5.5rem;height:10rem;opacity:.9;background:radial-gradient(closest-side,rgb(255 236 212/.26),rgb(255 236 212/.13) 30%,rgb(255 236 212/.05) 60%,rgb(255 236 212/0)),radial-gradient(closest-side,#1c1c1f,rgb(28 28 31/.6) 55%,rgb(28 28 31/0))} .ds-piece::after{content:\"\";position:absolute;z-index:-1;left:3%;right:3%;bottom:-.9rem;height:1.8rem;background:radial-gradient(closest-side,rgb(0 0 0/.92),rgb(0 0 0/0));filter:blur(3px)} .ds-catch{position:absolute;z-index:1;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,rgb(255 236 212/0),rgb(255 236 212/.5) 22%,rgb(255 236 212/.75) 50%,rgb(255 236 212/.5) 78%,rgb(255 236 212/0))} .ds-face{aspect-ratio:4/3;background:linear-gradient(180deg,rgb(255 236 212/.14),rgb(255 236 212/.03) 34%,rgb(0 0 0/0) 55%,rgb(0 0 0/.24)),linear-gradient(180deg,#242327,#18181a 46%,#141416);box-shadow:inset 0 1px 0 rgb(255 236 212/.12),0 2.5rem 3rem -2rem rgb(0 0 0/.95),0 .75rem 1.5rem -.5rem rgb(0 0 0/.6)}"
+    },
+    {
+      "name": "Index row",
+      "kind": "card",
+      "refersTo": "index-row",
+      "description": "Works index row between hairlines: 4:3 thumbnail, title, dim summary, dim meta.",
+      "html": "<a class=\"ds-row\" href=\"#\"><span class=\"ds-thumb\"></span><span class=\"ds-main\"><span class=\"ds-title\">软褶<span class=\"ds-sec\" lang=\"en\"> Softfold</span></span><span class=\"ds-sum\">一种会回握你的气动织物</span><span class=\"ds-meta\">2026 · 研究 / 设计与工程</span></span></a>",
+      "css": ".ds-row{display:grid;grid-template-columns:11rem minmax(0,1fr);gap:1.75rem;align-items:center;padding:1.1rem 0;border-top:1px solid rgb(242 242 240/.1);border-bottom:1px solid rgb(242 242 240/.1);text-decoration:none;color:var(--ink,#f2f2f0);font-family:var(--sans, \"Hanken Grotesk\", system-ui, sans-serif)} .ds-thumb{position:relative;aspect-ratio:4/3;background:linear-gradient(180deg,#242327,#18181a 46%,#141416);box-shadow:0 .9rem 1rem -.7rem rgb(0 0 0/.95)} .ds-thumb::after{content:\"\";position:absolute;inset:0;background:linear-gradient(180deg,rgb(255 236 212/.12),rgb(255 236 212/0) 45%);opacity:.6;transition:opacity .3s} .ds-row:hover .ds-thumb::after{opacity:1} .ds-main{display:flex;flex-direction:column;gap:.2rem} .ds-title{font-size:1.1875rem;font-weight:500;line-height:1.35} .ds-sec{display:block;font-size:.8125rem;font-weight:400;color:var(--dim,#9a9aa0)} .ds-row:hover .ds-title{text-decoration:underline;text-underline-offset:.22em} .ds-sum{font-size:.9375rem;line-height:1.5;color:var(--dim,#9a9aa0)} .ds-meta{margin-top:.4rem;font-size:.8125rem;color:var(--dim,#9a9aa0)} .ds-row:focus-visible{outline:2px solid var(--ink,#f2f2f0);outline-offset:4px}"
+    },
+    {
+      "name": "Profile row",
+      "kind": "custom",
+      "refersTo": "profile-row",
+      "description": "Heading column beside content, hairline above; timeline entries with dim tabular dates.",
+      "html": "<div class=\"ds-prow\"><h3>教育与经历</h3><ol><li><span class=\"ds-when\">2024 – 2028</span><span class=\"ds-what\"><b>博士研究生，人机交互</b><span>示例大学</span><span class=\"ds-dim\">研究软体触觉与慢技术</span></span></li></ol></div>",
+      "css": ".ds-prow{display:grid;grid-template-columns:14rem minmax(0,46rem);gap:.75rem 3rem;padding:1.75rem 0;border-top:1px solid rgb(242 242 240/.1);color:var(--ink,#f2f2f0);font:400 1.0625rem/1.7 var(--sans, \"Hanken Grotesk\", system-ui, sans-serif)} .ds-prow h3{margin:0;font-size:.9375rem;font-weight:600;line-height:1.6} .ds-prow ol{list-style:none;margin:0;padding:0} .ds-prow li{display:grid;grid-template-columns:8.5rem minmax(0,1fr);gap:0 1.25rem;line-height:1.55} .ds-when{font-size:.875rem;color:var(--dim,#9a9aa0);font-variant-numeric:tabular-nums;padding-top:.1rem} .ds-what{display:flex;flex-direction:column;gap:.1rem;word-break:keep-all;overflow-wrap:anywhere} .ds-what b{font-weight:500} .ds-dim{font-size:.875rem;color:var(--dim,#9a9aa0)}"
+    },
+    {
+      "name": "Citation",
+      "kind": "custom",
+      "refersTo": "profile-row",
+      "description": "Publication entry: owner in bold, title at 500, italic venue, bracketed links; missing links dim.",
+      "html": "<ol class=\"ds-pubs\"><li><b>Ada Lin</b>, Sample Co-author A, and Sample Co-author B. <span class=\"ds-pt\">Softfold: A Pneumatic Textile That Squeezes Back</span>. <i>Example Conf. '26</i>. <span class=\"ds-award\">Sample award</span><span class=\"ds-cites\"><a href=\"#\">[PDF]</a><span class=\"off\">[DOI]</span><a href=\"#\">[Video]</a></span></li></ol>",
+      "css": ".ds-pubs{list-style:decimal;padding-left:1.5rem;margin:0;color:rgb(242 242 240/.82);font:400 .9375rem/1.6 var(--sans, \"Hanken Grotesk\", system-ui, sans-serif)} .ds-pubs li::marker{color:var(--dim,#9a9aa0);font-size:.8125rem;font-variant-numeric:tabular-nums} .ds-pubs b,.ds-pt{color:var(--ink,#f2f2f0)} .ds-pt{font-weight:500} .ds-award{display:block;margin-top:.3rem;font-size:.8125rem;color:var(--ink,#f2f2f0)} .ds-cites{display:flex;flex-wrap:wrap;gap:0 .9rem;margin-top:.2rem;font-size:.8125rem} .ds-cites a{color:var(--ink,#f2f2f0);text-decoration:none;padding:.2rem 0} .ds-cites a:hover{text-decoration:underline} .ds-cites .off{color:var(--dim,#9a9aa0);padding:.2rem 0}"
+    },
+    {
+      "name": "Tag",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "Research-interest pill, 16% ink outline.",
+      "html": "<ul class=\"ds-tags\"><li>软体触觉界面</li><li>Slow technology</li></ul>",
+      "css": ".ds-tags{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:.5rem;font-family:var(--sans, \"Hanken Grotesk\", system-ui, sans-serif)} .ds-tags li{font-size:.8125rem;line-height:1.4;padding:.35rem .75rem;border:1px solid rgb(242 242 240/.16);border-radius:999px;color:var(--ink,#f2f2f0)}"
+    },
+    {
+      "name": "CV button",
+      "kind": "button",
+      "refersTo": "cv-button",
+      "description": "The one control that fills on hover; dashed and dim when the file is missing.",
+      "html": "<a class=\"ds-cv\" href=\"#\">下载简历 PDF</a> <span class=\"ds-cv off\">简历 PDF（待上传）</span>",
+      "css": ".ds-cv{display:inline-flex;align-items:center;padding:.7rem 1.2rem;font:400 .875rem var(--sans, \"Hanken Grotesk\", system-ui, sans-serif);color:var(--ink,#f2f2f0);border:1px solid rgb(242 242 240/.35);border-radius:999px;text-decoration:none;transition:background-color .2s,color .2s} a.ds-cv:hover{background:var(--ink,#f2f2f0);color:var(--stage,#0b0b0c)} a.ds-cv:focus-visible{outline:2px solid var(--ink,#f2f2f0);outline-offset:4px} .ds-cv.off{border-style:dashed;color:var(--dim,#9a9aa0)}"
+    },
+    {
+      "name": "Placeholder",
+      "kind": "custom",
+      "refersTo": "placeholder",
+      "description": "Matte panel standing in for a missing file; names the kind and the exact asset path.",
+      "html": "<div class=\"ds-ph\" role=\"img\" aria-label=\"Image placeholder: src/assets/works/softfold/cover.jpg\"><span class=\"ds-tag\"><span class=\"ds-kind\">图片占位</span><span class=\"ds-path\">src/assets/works/softfold/cover.jpg</span></span></div>",
+      "css": ".ds-ph{display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:16/9;padding:1.2rem;background:linear-gradient(180deg,#242327,#18181a 46%,#141416);box-shadow:inset 0 1px 0 rgb(255 236 212/.12);font-family:var(--sans, \"Hanken Grotesk\", system-ui, sans-serif)} .ds-tag{display:flex;flex-direction:column;gap:.2rem;font-size:.75rem;line-height:1.4;color:var(--dim,#9a9aa0)} .ds-kind{color:var(--ink,#f2f2f0);font-weight:500;letter-spacing:.01em} .ds-path{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.6875rem;word-break:break-all}"
+    },
+    {
+      "name": "Audio panel",
+      "kind": "card",
+      "refersTo": "media-panel",
+      "description": "Flat floor panel for audio, PDF and embeds, with a top-light inset.",
+      "html": "<div class=\"ds-audio\"><span class=\"ds-at\">雨中练习曲</span><span class=\"ds-aph\"><svg viewBox=\"0 0 16 16\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"M4 2.5v11l9-5.5z\" fill=\"currentColor\"/></svg> 音频放在 <code>src/assets/…</code></span></div>",
+      "css": ".ds-audio{display:flex;flex-direction:column;gap:.6rem;padding:1.1rem 1.3rem;background:var(--floor,#1c1c1f);box-shadow:inset 0 1px 0 rgb(255 236 212/.08);color:var(--ink,#f2f2f0);font-family:var(--sans, \"Hanken Grotesk\", system-ui, sans-serif)} .ds-at{font-weight:500} .ds-aph{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;font-size:.8125rem;color:var(--dim,#9a9aa0)} .ds-aph svg{color:var(--ink,#f2f2f0)} .ds-aph code{font-family:ui-monospace,Menlo,monospace;font-size:.82em}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Night Stage",
+    "overview": "The site is a dark room with one warm light in it. The first screen puts the newest work under that light, with a catch-light on its top edge, a lit pool on the floor and a contact shadow. The owner's name stands beside it in large display type. Below the first screen the light falls away and the room is lit evenly for reading: a self-introduction set in two columns, then a dense index of every work. The light is the only accent. Type and hairlines do all the other work.\n\nThe site is restrained: two greys, warm white, and one warm light. Nothing on the page is saturated. Density is low on the first screen and high below it. The profile and the index use tight rows divided by hairlines, so a recruiter or advisor can scan them quickly.",
+    "keyCharacteristics": [
+      "Near-black stage, a slightly lighter floor, and warm white and grey text only.",
+      "One soft radial warm light, with falloff and no cone. It belongs to the first screen and scrolls away with it.",
+      "Objects stand in the light: catch-light, floor pool, contact shadow, and a drop shadow that falls downward.",
+      "Large, tight display type with quiet captions in grey at 13px.",
+      "A fixed bottom rail of sections, always within reach.",
+      "Square media, pill-shaped chips and buttons, and hairline dividers. There are no cards."
+    ],
+    "rules": [
+      {
+        "name": "The Light Is the Accent Rule",
+        "body": "There is no accent colour. Emphasis comes from ink against dim, from weight, or from the warm light landing on something. Never add a hue for links, states or badges.",
+        "section": "colors"
+      },
+      {
+        "name": "The Light Only Falls Rule",
+        "body": "Warm light enters from above and falls off downward: top light, catch-light on top edges, gradients that run from warm at the top to shadow at the bottom. Nothing is lit from below or from the side.",
+        "section": "colors"
+      },
+      {
+        "name": "The Phrase-Break Rule",
+        "body": "Short display lines (names, titles, leads, captions, row titles, timeline entries, quotes, prose headings) use `word-break: keep-all; overflow-wrap: anywhere; text-wrap: balance`, so they never strand a single word. Long paragraphs use `text-wrap: pretty`. Do not put keep-all on running text.",
+        "section": "typography"
+      },
+      {
+        "name": "The Shadow Falls Down Rule",
+        "body": "Every shadow has a negative spread and a positive y offset. Shadows sit under objects, never around them as a halo.",
+        "section": "elevation"
+      },
+      {
+        "name": "The One Light Rule",
+        "body": "There is one light, and it is on the first screen only (130svh, absolutely positioned, scrolling away). The reading room below the first screen gets no additional light sources and no glows.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep text to ink, body and dim. Use the warm light only as low-alpha radial light.",
+      "Do stand featured media in the light (pool, catch-light, contact shadow, downward drop), and keep everything below the first screen evenly lit.",
+      "Do divide lists with 1px hairlines (ink at 10%) and rows. Do not use cards.",
+      "Do use the phrase-break rule on every short display line.",
+      "Do show missing files as labelled placeholders with their asset path, and missing links in dim. Never hide them.",
+      "Do gate scroll-driven motion behind both reduced-motion and `@supports (animation-timeline)`."
+    ],
+    "donts": [
+      "Don't add an accent hue, a coloured link state or a coloured badge.",
+      "Don't light anything from below or the side, or use a hard-edged spotlight cone.",
+      "Don't round media or panel corners. Pills are reserved for tags and the CV button.",
+      "Don't use a thumbnail grid for the works. The index is rows.",
+      "Don't apply keep-all to long paragraphs.",
+      "Don't animate body text layers."
+    ]
+  }
+}

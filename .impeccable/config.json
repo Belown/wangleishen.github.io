@@ -7,7 +7,7 @@
         "rule": "broken-image",
         "value": "*",
         "files": [
-          "sites/garden/src/pages/Section.tsx"
+          "archive/garden/src/pages/Section.tsx"
         ],
         "createdAt": "2026-11-16T23:25:37.897Z",
         "reason": "Claude: <Img file=…> is the project's placeholder component; it renders a labelled placeholder until the asset exists in src/assets"
@@ -16,7 +16,7 @@
         "rule": "broken-image",
         "value": "*",
         "files": [
-          "sites/garden/src/pages/WorkPage.tsx"
+          "archive/garden/src/pages/WorkPage.tsx"
         ],
         "createdAt": "2026-11-16T23:25:38.123Z",
         "reason": "Claude: <Img file=…> is the project's placeholder component; it renders a labelled placeholder until the asset exists in src/assets"
@@ -25,7 +25,7 @@
         "rule": "broken-image",
         "value": "*",
         "files": [
-          "sites/garden/src/pages/About.tsx"
+          "archive/garden/src/pages/About.tsx"
         ],
         "createdAt": "2026-11-16T23:25:38.360Z",
         "reason": "Claude: <Img file=…> is the project's placeholder component; it renders a labelled placeholder until the asset exists in src/assets"
@@ -34,7 +34,7 @@
         "rule": "broken-image",
         "value": "*",
         "files": [
-          "sites/_core/src/media.tsx"
+          "archive/_core/src/media.tsx"
         ],
         "createdAt": "2026-11-17T01:33:33.160Z",
         "reason": "Claude: <Img>/<Gallery> are the placeholder components; they render a labelled placeholder until the asset exists"
@@ -43,7 +43,7 @@
         "rule": "broken-image",
         "value": "*",
         "files": [
-          "sites/room/src/media.tsx"
+          "archive/room/src/media.tsx"
         ],
         "createdAt": "2026-11-17T01:33:33.393Z",
         "reason": "Claude: <Img>/<Gallery> are the placeholder components; they render a labelled placeholder until the asset exists"
@@ -52,7 +52,7 @@
         "rule": "broken-image",
         "value": "*",
         "files": [
-          "sites/sleeve/src/media.tsx"
+          "archive/sleeve/src/media.tsx"
         ],
         "createdAt": "2026-11-17T01:33:33.619Z",
         "reason": "Claude: <Img>/<Gallery> are the placeholder components; they render a labelled placeholder until the asset exists"
@@ -61,7 +61,7 @@
         "rule": "broken-image",
         "value": "*",
         "files": [
-          "sites/metro/src/media.tsx"
+          "archive/metro/src/media.tsx"
         ],
         "createdAt": "2026-11-17T01:33:33.846Z",
         "reason": "Claude: <Img>/<Gallery> are the placeholder components; they render a labelled placeholder until the asset exists"
@@ -70,10 +70,73 @@
         "rule": "broken-image",
         "value": "*",
         "files": [
-          "sites/metro/src/pages.tsx"
+          "archive/metro/src/pages.tsx"
         ],
         "createdAt": "2026-11-17T01:51:40.352Z",
         "reason": "Claude: <Img> is the placeholder component; it renders a labelled placeholder until the asset exists"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "archive/dial/src/media.tsx"
+        ],
+        "createdAt": "2026-11-24T22:26:46.213Z",
+        "reason": "Claude: archived exploration (moved from sites/dial at the user's request); <Img>/<Gallery> are its labelled placeholder components, same exception it had before the move"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "archive/dial/src/pages.tsx"
+        ],
+        "createdAt": "2026-11-24T22:26:46.126Z",
+        "reason": "Claude: archived exploration (moved from sites/dial at the user's request); <Img>/<Gallery> are its labelled placeholder components, same exception it had before the move"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/media.tsx"
+        ],
+        "createdAt": "2026-11-24T21:03:50.664Z",
+        "reason": "Claude: <Img>/<Gallery> are the placeholder components; they render a labelled placeholder until the asset exists in src/assets (coordinator confirmed expected)"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/pages.tsx"
+        ],
+        "createdAt": "2026-11-24T21:03:50.766Z",
+        "reason": "Claude: <Img>/<Gallery> are the placeholder components; they render a labelled placeholder until the asset exists in src/assets (coordinator confirmed expected)"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "name sc",
+        "files": [
+          "src/styles.css"
+        ],
+        "createdAt": "2026-11-24T22:18:10.914Z",
+        "reason": "Claude: user asked to show their Chinese name 沈王磊 on the home page; Name SC is a 3-glyph Noto Sans SC subset for just that line, documented in DESIGN.md"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "jost",
+        "files": [
+          "archive/dial/src/styles.css"
+        ],
+        "createdAt": "2026-11-24T22:29:52.866Z",
+        "reason": "Claude: archived exploration with its own type system; the root DESIGN.md (the live site) does not govern archive/"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "noto sans sc",
+        "files": [
+          "archive/dial/index.html"
+        ],
+        "createdAt": "2026-11-24T22:29:52.953Z",
+        "reason": "Claude: archived exploration with its own type system; the root DESIGN.md (the live site) does not govern archive/"
       }
     ]
   }

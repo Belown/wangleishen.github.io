@@ -5,3 +5,9 @@ dist/
 Thumbs.db
 .impeccable/hook.cache.json
 .vite/
+
+# Impeccable working material (screenshots, decision pages, comps)
+.impeccable/review/
+.impeccable/mocks/
+.impeccable/questions/
+**/.impeccable/hook.cache.json

@@ -8,7 +8,7 @@ web
 
 ## Users
 
-Primarily the owner and their friends. The site is personal expression first: a place to keep and show what the owner makes, and for friends to browse it. Admissions committees, employers and collaborators are not the target; any of them may visit, but nothing should be optimised for them at the expense of the personal character.
+The owner, their friends, and (as of 2026-11-24, at the owner's request) HR and prospective supervisors/advisors. The site stays personal expression first, but the home page must also serve a recruiter or advisor: after a concise first screen, scrolling reveals a proper self-introduction (bio and research interests, education and experience, publications and honours, contact and CV PDF).
 
 ## Product Purpose
 
@@ -20,7 +20,7 @@ One person's whole practice in one place, research next to music next to essays,
 
 ## Operating Context
 
-- Content is bilingual: Chinese and English, with the main content available in both and a way to switch.
+- Content is English only (owner's decision, 2026-11-24: maintaining two languages was too much work).
 - The owner will keep adding work over time, so adding a project, post, photo or recording must stay easy.
 - Existing build: a Vite + React + TypeScript app in this folder (`src/`), with placeholder content in `src/content/` and a drop-in asset folder at `src/assets/`. A second experimental copy lives in `bogujia/`.
 
@@ -39,4 +39,4 @@ None yet. No real projects, papers, photos, recordings or texts have been provid
 1. The work leads; the site is the room it hangs in.
 2. Breadth without hierarchy: research, making, art and writing sit side by side.
 3. Easy to keep alive: adding something new should take minutes, not a redesign.
-4. Both languages are first-class, not a translation afterthought.
+4. One language, English, so there is only one version of everything to keep up to date.

@@ -1,21 +1,17 @@
-# Personal site explorations
+# Personal site
 
-Four directions for one personal portfolio, each a standalone Vite + React app. All content is placeholder.
-
-| Site | Folder |
-| --- | --- |
-| 3D zen garden | `sites/garden` |
-| Pixel room | `sites/room` |
-| Record sleeve | `sites/sleeve` |
-| Transit map | `sites/metro` |
-| 3D curio shelf (博古架) | `bogujia` |
-
-Run any of them:
+A Vite + React app at the root of this repo.
 
 ```bash
-cd sites/room
 npm install
-npm run dev
+npm run dev     # http://localhost:5187
 ```
 
-`sites/_core` is the shared starting template the 2D sites were copied from; editing it does not change them.
+- All text is in `src/content.ts`.
+- Images, video and PDFs go in `src/assets/`. Photos for `/photos` go in `src/assets/photos/`.
+- The design system is in `DESIGN.md`.
+- Logo files are in `public/logo/`: `wordmark`, `wordmark-stacked` and `mark` ("w."), each in a light-on-dark version and a `-dark` version for light grounds, plus `app-icon.svg`. `public/favicon.svg` is the browser icon. The letters are outlined from Hanken Grotesk 600, so the files need no font.
+
+## Archive
+
+`archive/` holds earlier explorations, kept for reference and no longer maintained: garden (3D zen garden), room (pixel room), sleeve (record sleeve), metro (transit map), bogujia (3D curio shelf), dial (dial finishing) and `_core` (the shared starter template they were copied from). Each still runs on its own with `npm install && npm run dev`.
