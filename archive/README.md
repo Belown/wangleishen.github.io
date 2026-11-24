@@ -18,7 +18,6 @@ npm run dev
 | Dial finishing (Swiss watch-dial look) | `dial` |
 | Studio + gallery (the main site from 2026-11-17 until the Night Stage site replaced it) | `studio` |
 | Shared starting template for the 2D sites | `_core` |
-| Static HTML previews A–E (open `previews/index.html`) | `previews` |
 
 ## Making one of these the main app again
 

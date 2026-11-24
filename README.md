@@ -14,7 +14,7 @@ npm run dev     # http://localhost:5187
 
 ## Archive
 
-`archive/` holds earlier explorations, kept for reference and no longer maintained: garden, room, sleeve, metro, bogujia, dial, studio (the previous main site), static HTML previews, and `_core` (the starter template). See `archive/README.md`; each still runs on its own with `npm install && npm run dev`.
+`archive/` holds earlier explorations, kept for reference and no longer maintained: garden, room, sleeve, metro, bogujia, dial, studio (the previous main site) and `_core` (the starter template). See `archive/README.md`; each still runs on its own with `npm install && npm run dev`.
 
 ## Deploy
 
