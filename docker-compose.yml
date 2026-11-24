@@ -1,0 +1,12 @@
+# The personal site: Caddy serves the built Vite app.
+#   cp .env.example .env   # then edit
+#   docker compose up -d --build
+services:
+  web:
+    build: .
+    restart: unless-stopped
+    environment:
+      SITE_USER: ${SITE_USER:-guest}
+      SITE_PASSWORD: ${SITE_PASSWORD:-}
+    ports:
+      - "127.0.0.1:${HTTP_PORT:?set HTTP_PORT in .env}:80"

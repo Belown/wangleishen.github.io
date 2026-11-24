@@ -15,3 +15,16 @@ npm run dev     # http://localhost:5187
 ## Archive
 
 `archive/` holds earlier explorations, kept for reference and no longer maintained: garden (3D zen garden), room (pixel room), sleeve (record sleeve), metro (transit map), bogujia (3D curio shelf), dial (dial finishing) and `_core` (the shared starter template they were copied from). Each still runs on its own with `npm install && npm run dev`.
+
+## Deploy
+
+Same setup as coprompt-revibe: on the server, Docker builds the site and Caddy serves it on `127.0.0.1:${HTTP_PORT}`; Cloudflare Tunnel (or the host's reverse proxy) puts it on the domain and terminates TLS.
+
+```bash
+cp .env.example .env    # set HTTP_PORT and, while the site is private, SITE_PASSWORD
+docker compose up -d --build
+```
+
+Update: `git pull && docker compose up -d --build`. There is no automatic deploy on push.
+
+While `SITE_PASSWORD` is set, the browser asks for a user name (`SITE_USER`, default `guest`) and that password before showing any page. Empty it and run `docker compose up -d` to make the site public. `.env` is never committed.

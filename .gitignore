@@ -1,12 +1,25 @@
+# Dependencies and build output (at any depth, so archive/* too)
 node_modules/
 dist/
+.vite/
+*.local
+
+# Secrets: .env holds the site password. Only the example is committed.
+.env
+.env.*
+!.env.example
+
+# Logs, OS and editor files
 *.log
 .DS_Store
 Thumbs.db
-.impeccable/hook.cache.json
-.vite/
+.vscode/
+.idea/
 
-# Impeccable working material (screenshots, decision pages, comps)
+# Claude Code's per-machine settings
+.claude/settings.local.json
+
+# Impeccable working material (screenshots, decision pages, comps, hook cache)
 .impeccable/review/
 .impeccable/mocks/
 .impeccable/questions/
