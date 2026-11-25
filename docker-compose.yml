@@ -16,7 +16,9 @@ services:
   # Refreshes the Records page from Discogs every 6 hours into the volume Caddy serves at /data/.
   # Without DISCOGS_USER it only logs a reminder; the page then shows its sample layout.
   records:
-    image: node:22-alpine
+    build:
+      context: .
+      target: records
     restart: unless-stopped
     environment:
       DISCOGS_USER: ${DISCOGS_USER:-}
@@ -25,15 +27,11 @@ services:
       RAW_DIR: /raw
       COVERS_DIR: /app/record-covers
     volumes:
-      - ./scripts/discogs.mjs:/app/discogs.mjs:ro
-      # Covers chosen by hand, replacing Discogs' (record-covers/<release id>.jpg).
-      - ./record-covers:/app/record-covers:ro
       - records:/data
       # Every Discogs response in full, kept out of what Caddy serves.
       - records-raw:/raw
-    command: ["sh", "-c", "while true; do node /app/discogs.mjs; sleep 21600; done"]
 
-  # Auto-deploy, on the server only: docker compose --profile autodeploy up -d
+  # Auto-deploy, on the server only: docker compose --profile autodeploy up -d --build
   # After a push to main, GitHub Actions calls /_deploy; this pulls and rebuilds web and records (scripts/deploy-hook.mjs).
   # It drives Docker through the socket, which is root on the host: fine for a personal server, think twice elsewhere.
   deploy:
@@ -43,12 +41,11 @@ services:
     environment:
       DEPLOY_SECRET: ${DEPLOY_SECRET:-}
       GITHUB_TOKEN: ${GITHUB_TOKEN:-}
-    working_dir: ${PWD:?run docker compose from the repo folder}
+    working_dir: /repo
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      # The checkout at the same path as on the host, so the bind mounts compose sets up from here point at the right folders.
-      - ${PWD}:${PWD}
-    command: ["sh", "-c", "apk add --no-cache git docker-cli docker-cli-compose >/dev/null && git config --global --add safe.directory \"$$PWD\" && exec node scripts/deploy-hook.mjs"]
+      - .:/repo
+    command: ["sh", "-c", "apk add --no-cache git docker-cli docker-cli-compose >/dev/null && git config --global --add safe.directory /repo && exec node scripts/deploy-hook.mjs"]
 
 volumes:
   records:

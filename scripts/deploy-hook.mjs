@@ -17,6 +17,13 @@ const hide = (s) => (token ? String(s).replaceAll(token, '***') : String(s))
 const sh = async (cmd, ...args) => (await promisify(execFile)(cmd, args, { maxBuffer: 64 << 20 })).stdout.trim()
 const sameSecret = (a) => timingSafeEqual(createHash('sha256').update(a).digest(), createHash('sha256').update(`Bearer ${secret}`).digest())
 
+// The project this container belongs to (named after the folder on the host), so compose here acts on the same containers.
+const project = await sh('docker', 'inspect', process.env.HOSTNAME, '--format', '{{ index .Config.Labels "com.docker.compose.project" }}')
+const compose = (...args) => sh('docker', 'compose', '-p', project, ...args)
+// A checkout made on Windows has CRLF files that git here would count as local changes; treat them as Windows git does.
+const changed = async (crlf) => (await sh('git', '-c', `core.autocrlf=${crlf}`, 'status', '--porcelain', '--untracked-files=no')) !== ''
+if (await changed('false') && !(await changed('true'))) await sh('git', 'config', '--global', 'core.autocrlf', 'true')
+
 const origin = await sh('git', 'remote', 'get-url', 'origin')
 const url = token ? origin.replace(/^https:\/\//, `https://x-access-token:${token}@`) : origin
 const { uid, gid } = statSync('.git') // what the merge writes goes back to the checkout's owner, not root
@@ -32,10 +39,10 @@ async function deploy() {
     else {
       log(`deploying ${next}: ${await sh('git', 'log', '-1', '--format=%s', 'FETCH_HEAD')}`)
       await sh('git', 'merge', '-q', '--ff-only', 'FETCH_HEAD')
-      await sh('chown', '-R', `${uid}:${gid}`, '.')
+      await sh('chown', '-R', `${uid}:${gid}`, '.').catch(() => {}) // not possible (nor needed) on a Windows host's folder
       // Not this service itself: recreating it would cut this run short. Restart it by hand when its own setup changes.
-      await sh('docker', 'compose', 'up', '-d', '--build', 'web', 'records')
-      await sh('docker', 'compose', 'restart', 'records') // a fresh sync picks up record-covers/ and the sync script now
+      // A changed sync script or record-covers/ rebuilds records, which then syncs at once.
+      await compose('up', '-d', '--build', 'web', 'records')
       log(`deployed ${next}`)
     }
   } catch (e) {
@@ -49,4 +56,4 @@ createServer((req, res) => {
   if (req.method !== 'POST' || !sameSecret(req.headers.authorization ?? '')) return res.writeHead(404).end()
   res.writeHead(202).end('deploying\n')
   deploy()
-}).listen(9000, () => log('waiting for GitHub on :9000'))
+}).listen(9000, () => log(`waiting for GitHub on :9000 (project ${project})`))
