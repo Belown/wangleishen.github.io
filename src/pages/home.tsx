@@ -153,10 +153,9 @@ export function WorksIndex({ works, filterable, title }: { works: Work[]; filter
 
 export function Home() {
   useTitle()
-  const [newest] = newestFirst(WORKS)
   return (
     <main className="home">
-      <Hero w={newest}>
+      <Hero>
         <Name text={OWNER.name} />
         <p className="name-zh" lang="zh-CN">{OWNER.nameZh}</p>
         <p className="line keep">{OWNER.line}</p>

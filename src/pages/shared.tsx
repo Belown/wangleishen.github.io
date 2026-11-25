@@ -33,12 +33,13 @@ export function Piece({ w, link = true, ratio = '4/3', portrait }: { w?: Work; l
     : <div className={cls}>{inner}</div>
 }
 
-/** The opening screen: a short introduction on the left, one work in the light on the right. */
-export function Hero({ w, children, compact }: { w: Work; children: ReactNode; compact?: boolean }) {
+/** The opening screen: a short introduction on the left; in the light on the right, one work, or without one the owner's portrait. */
+export function Hero({ w, children, compact }: { w?: Work; children: ReactNode; compact?: boolean }) {
   return (
     <section className={`hero ${compact ? 'compact' : ''}`}>
       <div className="hero-text">{children}</div>
       <div className="hero-stage">
+        {!w ? <Piece portrait={OWNER.portrait} ratio="4/5" /> : <>
         <Piece w={w} />
         <p className="caption keep">
           <Link to={`/work/${w.slug}`}>{w.title}</Link>
@@ -47,6 +48,7 @@ export function Hero({ w, children, compact }: { w: Work; children: ReactNode; c
           <span className="dot">·</span>
           <Sections w={w} />
         </p>
+        </>}
       </div>
     </section>
   )

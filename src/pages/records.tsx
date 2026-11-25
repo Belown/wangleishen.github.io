@@ -16,7 +16,7 @@ let recordsLoad: Promise<Rec[]> | undefined
 export function useRecords() {
   const [recs, setRecs] = useState<Rec[]>()
   useEffect(() => {
-    recordsLoad ??= fetch('/data/records.json', { cache: 'no-cache' }).then((r) => (r.ok ? r.json() : []), () => [])
+    recordsLoad ??= fetch('/data/records.json', { cache: 'no-cache' }).then((r) => (r.ok ? r.json() : [])).catch(() => [])
     recordsLoad.then(setRecs)
   }, [])
   return recs
