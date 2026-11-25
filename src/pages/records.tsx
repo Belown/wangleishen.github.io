@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router'
 import { NotFound } from './not-found'
-import { PageHead, useTitle } from './shared'
+import { PageHead, lead, useTitle } from './shared'
 
 /**
  * The Discogs collection, by year of first release, newest first. scripts/discogs.mjs writes it to /data/ (public/data/ locally;
@@ -84,7 +84,7 @@ export function RecordPage() {
           {cover ? <img src={cover} alt={`Cover of ${r.title}`} /> : <span className="sleeve-blank" />}
         </div>
         <div className="record-info">
-          <h1 className="record-title">{r.title}</h1>
+          <h1 className="record-title" style={lead(r.title)}>{r.title}</h1>
           <p className="record-artist">{r.artist}</p>
           <dl className="record-facts">
             {facts.filter(([, v]) => v).map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}
@@ -94,7 +94,7 @@ export function RecordPage() {
       </div>
       {r.tracks && r.tracks.length > 0 && (
         <section className="tracks" aria-labelledby="tracks-h">
-          <h2 id="tracks-h" className="works-title">Tracklist</h2>
+          <h2 id="tracks-h" className="works-title" style={lead('Tracklist')}>Tracklist</h2>
           <ol>
             {r.tracks.map((t) => (
               <li key={t.pos + t.title}>

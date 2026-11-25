@@ -1,4 +1,4 @@
-import { Fragment, useEffect, type ReactNode } from 'react'
+import { Fragment, useEffect, type CSSProperties, type ReactNode } from 'react'
 import { Link } from 'react-router'
 import { asset } from '../assets'
 import { ME, OWNER, SECTIONS, whenOf, type T, type Work } from '../content'
@@ -54,10 +54,18 @@ export function Hero({ w, children, compact }: { w?: Work; children: ReactNode; 
   )
 }
 
+/**
+ * Optical alignment for large type: a capital's left side bearing (Hanken Grotesk 600, in em) grows with the type,
+ * so a big heading starting with B or R looks indented next to the text below it. Passing this as `style` sets --lsb,
+ * and the heading classes pull the heading left by that much (see .display in styles/hero.css).
+ */
+const SIDE_BEARING: [string, number][] = [['BDEFHIKLMNPRU', 0.075], ['CGOQSΘ', 0.037], ['JWXZ', 0.02]]
+export const lead = (text: string) => ({ '--lsb': SIDE_BEARING.find(([cs]) => cs.includes(text.trim()[0]))?.[1] ?? 0 }) as CSSProperties
+
 /** A name or section title in display type. */
 export function Name({ text, level = 1 }: { text: T; level?: 1 | 2 }) {
   const Tag = level === 1 ? 'h1' : 'h2'
-  return <Tag className="display keep">{text}</Tag>
+  return <Tag className="display keep" style={lead(text)}>{text}</Tag>
 }
 
 export function Authors({ list }: { list: string[] }) {

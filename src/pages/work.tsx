@@ -4,7 +4,7 @@ import { asset } from '../assets'
 import { ME, SAMPLE_NOTE, SECTIONS, whenOf, workBySlug, worksIn, type Paper, type T, type Work } from '../content'
 import { Blocks } from '../media'
 import { NotFound } from './not-found'
-import { Authors, CiteLink, Piece, newestFirst, useTitle } from './shared'
+import { Authors, CiteLink, Piece, lead, newestFirst, useTitle } from './shared'
 
 function Fact({ label, children }: { label: T; children: ReactNode }) {
   return (
@@ -100,7 +100,7 @@ function CaseStudy({ w }: { w: Work }) {
     <main className="work">
       <header className="hero compact">
         <div className="hero-text">
-          <h1 className="display work-title keep">{w.title}</h1>
+          <h1 className="display work-title keep" style={lead(w.title)}>{w.title}</h1>
           {w.paper ? <PaperHead w={w} p={w.paper} /> : <p className="line keep">{w.summary}</p>}
           <dl className="facts">
             <Fact label={'Date'}><span className="num">{whenOf(w).replaceAll('-', '.')}</span></Fact>

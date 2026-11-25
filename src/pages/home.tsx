@@ -6,7 +6,7 @@ import { Blocks, Img } from '../media'
 import { PhotoWall } from './photos'
 import { Feed } from './random'
 import { Shelf, useRecords } from './records'
-import { Authors, CiteLink, Hero, Name, Sections, cover, newestFirst, useTitle } from './shared'
+import { Authors, CiteLink, Hero, Name, Sections, cover, lead, newestFirst, useTitle } from './shared'
 
 /* ---------- The self-introduction ---------- */
 
@@ -17,8 +17,8 @@ export function Profile({ page }: { page?: boolean }) {
     <section className="profile" id="profile" aria-labelledby="profile-h">
       <header className="profile-head">
         {page
-          ? <h1 id="profile-h" className="profile-title keep">{OWNER.hello}</h1>
-          : <h2 id="profile-h" className="profile-title keep">{OWNER.hello}</h2>}
+          ? <h1 id="profile-h" className="profile-title keep" style={lead(OWNER.hello)}>{OWNER.hello}</h1>
+          : <h2 id="profile-h" className="profile-title keep" style={lead(OWNER.hello)}>{OWNER.hello}</h2>}
         {SAMPLE_NOTE && <p className="sample">{SAMPLE_NOTE}</p>}
       </header>
 
@@ -121,7 +121,7 @@ export function WorksIndex({ works, filterable, title }: { works: Work[]; filter
   return (
     <section className="works" id="works" aria-labelledby="works-h">
       <div className="works-head">
-        <h2 id="works-h" className="works-title">{title}</h2>
+        <h2 id="works-h" className="works-title" style={lead(title)}>{title}</h2>
         {filterable && (
           <div className="filter" role="group" aria-label={'Filter by section'}>
             {(['all', ...SECTION_KEYS] as const).map((k) => (
@@ -174,21 +174,21 @@ function Glimpses() {
     <>
       <section className="works glimpse" aria-labelledby="g-photos">
         <div className="works-head">
-          <h2 id="g-photos" className="works-title">Photos</h2>
+          <h2 id="g-photos" className="works-title" style={lead('Photos')}>Photos</h2>
           <Link to="/photos" className="see-all">All photos</Link>
         </div>
         <PhotoWall limit={4} strip />
       </section>
       <section className="works glimpse" aria-labelledby="g-records">
         <div className="works-head">
-          <h2 id="g-records" className="works-title">Records</h2>
+          <h2 id="g-records" className="works-title" style={lead('Records')}>Records</h2>
           <Link to="/records" className="see-all">All records</Link>
         </div>
         <Shelf records={records} limit={6} strip />
       </section>
       <section className="works glimpse" aria-labelledby="g-random">
         <div className="works-head">
-          <h2 id="g-random" className="works-title">Random</h2>
+          <h2 id="g-random" className="works-title" style={lead('Random')}>Random</h2>
           <Link to="/random" className="see-all">All posts</Link>
         </div>
         <Feed limit={3} compact />
