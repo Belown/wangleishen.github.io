@@ -1,6 +1,6 @@
 # The personal site: Caddy serves the built Vite app.
-#   cp .env.example .env   # then edit
-#   docker compose up -d --build
+#   cp .env.example .env   # then edit (optional: without it the site is public on 8081 and Records shows samples)
+#   docker compose up -d
 services:
   web:
     build: .
@@ -9,7 +9,7 @@ services:
       SITE_USER: ${SITE_USER:-guest}
       SITE_PASSWORD: ${SITE_PASSWORD:-}
     ports:
-      - "127.0.0.1:${HTTP_PORT:?set HTTP_PORT in .env}:80"
+      - "127.0.0.1:${HTTP_PORT:-8081}:80"
     volumes:
       - records:/srv/data:ro
 
@@ -31,12 +31,11 @@ services:
       # Every Discogs response in full, kept out of what Caddy serves.
       - records-raw:/raw
 
-  # Auto-deploy, on the server only: docker compose --profile autodeploy up -d --build
-  # After a push to main, GitHub Actions calls /_deploy; this pulls and rebuilds web and records (scripts/deploy-hook.mjs).
-  # It drives Docker through the socket, which is root on the host: fine for a personal server, think twice elsewhere.
+  # Auto-deploy: after a push to main, GitHub Actions calls https://<domain>/_deploy, and this pulls main and rebuilds
+  # web and records (scripts/deploy-hook.mjs). It only acts when called, and GitHub calls the domain, so on any other
+  # machine (a laptop running the site) it stays idle. It drives Docker through the socket, which is root on the host.
   deploy:
     image: node:22-alpine
-    profiles: [autodeploy]
     restart: unless-stopped
     environment:
       GITHUB_TOKEN: ${GITHUB_TOKEN:-}

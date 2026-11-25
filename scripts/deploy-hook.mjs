@@ -1,5 +1,6 @@
-// The deploy service (docker compose --profile autodeploy up -d). After a push to main, GitHub Actions
-// (.github/workflows/deploy.yml) POSTs to /_deploy; Caddy passes that here, and this pulls main and rebuilds.
+// The deploy service (started by docker compose up -d). After a push to main, GitHub Actions
+// (.github/workflows/deploy.yml) POSTs to /_deploy; Caddy passes that here, and this pulls main and rebuilds
+// every other service of the compose project. The same file serves more than one repo: keep the copies identical.
 // The request needs no secret: it only says "look at GitHub now", and what gets deployed is always GitHub's main,
 // so anyone calling it can at most make the server check again (runs are queued, never parallel). The repo is public; if it turns private,
 // set GITHUB_TOKEN (fine-grained: this repo, Contents read-only) and the pull uses it. Local changes on the server stop the pull; that is logged.
@@ -38,9 +39,9 @@ async function deploy() {
       log(`deploying ${next}: ${await sh('git', 'log', '-1', '--format=%s', 'FETCH_HEAD')}`)
       await sh('git', 'merge', '-q', '--ff-only', 'FETCH_HEAD')
       await sh('chown', '-R', `${uid}:${gid}`, '.').catch(() => {}) // not possible (nor needed) on a Windows host's folder
-      // Not this service itself: recreating it would cut this run short. Restart it by hand when its own setup changes.
-      // A changed sync script or record-covers/ rebuilds records, which then syncs at once.
-      await compose('up', '-d', '--build', 'web', 'records')
+      // Every service but this one: recreating it would cut this run short. Run docker compose up -d by hand when its own setup changes.
+      const services = (await compose('config', '--services')).split(/\s+/).filter((name) => name && name !== 'deploy')
+      await compose('up', '-d', '--build', ...services)
       log(`deployed ${next}`)
     }
   } catch (e) {

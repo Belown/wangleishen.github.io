@@ -25,8 +25,13 @@
 		header /assets/* Cache-Control "public, max-age=31536000, immutable"
 		# Records data changes when the records service syncs; browsers check back each time.
 		header /data/* Cache-Control "no-cache"
-		# Client-side routes (/photos, /work/…) fall back to index.html.
-		try_files {path} /index.html
+		# Client-side routes (/photos, /work/…) fall back to index.html. Record data (/data/…) does not:
+		# a missing records.json or cover is a plain 404, not the page in its place.
+		@app {
+			not path /data/*
+			not file
+		}
+		rewrite @app /index.html
 		file_server
 	}
 }

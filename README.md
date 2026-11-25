@@ -34,14 +34,15 @@ None of the Discogs data is committed.
 Same setup as coprompt-revibe: on the server, Docker builds the site and Caddy serves it on `127.0.0.1:${HTTP_PORT}`; Cloudflare Tunnel (or the host's reverse proxy) puts it on the domain and terminates TLS.
 
 ```bash
-cp .env.example .env    # set HTTP_PORT and, while the site is private, SITE_PASSWORD
-docker compose up -d --build
+git clone https://github.com/Belown/wangleishen.github.io.git   # https, not git@: the deploy service has no SSH key
+cp .env.example .env    # HTTP_PORT, SITE_PASSWORD while the site is private, DISCOGS_USER and DISCOGS_TOKEN
+docker compose up -d
 ```
 
-Update by hand: `git pull && docker compose up -d --build`.
+That starts everything: `web` (the site), `records` (the Discogs sync) and `deploy`. Images are built on the first start.
 
-**Auto-deploy on push:** after every push to `main`, `.github/workflows/deploy.yml` calls `https://<domain>/_deploy`, and the `deploy` service pulls `main` into the server's checkout and rebuilds `web` and `records`. The call needs no secret: it only makes the server look at GitHub, and only GitHub's `main` is ever deployed. One-time setup, on the server in the repo folder: `docker compose --profile autodeploy up -d --build` (the checkout's `origin` must be the https URL; if the domain is not wangleishen.com, set the Actions variable `DEPLOY_URL`).
+**Auto-deploy on push:** after every push to `main`, `.github/workflows/deploy.yml` calls `https://<domain>/_deploy`, and the `deploy` service pulls `main` into the server's checkout and rebuilds `web` and `records`. The call needs no secret: it only makes the server look at GitHub, and only GitHub's `main` is ever deployed. It acts only when called, and GitHub calls the domain, so on any other machine it stays idle. Follow deploys with `docker compose logs -f deploy`; Run workflow in the Actions tab deploys again. If the domain is not wangleishen.com, set the Actions variable `DEPLOY_URL`. The service never recreates itself: after a change to the `deploy` service, run `docker compose up -d` by hand. If the server's checkout has changes of its own, the pull stops and the log says so.
 
-Follow deploys with `docker compose logs -f deploy`; the Actions tab shows each call, and Run workflow there deploys again. The service never recreates itself, so after a change to the `deploy` service run that command again. If the server's checkout has changes of its own, the pull stops and the log says so.
+Moving to another server: the steps above, plus Cloudflare Tunnel pointed at `http://127.0.0.1:<HTTP_PORT>`. `.env` is the only thing to carry over; Records fills itself from Discogs within minutes.
 
 While `SITE_PASSWORD` is set, the browser asks for a user name (`SITE_USER`, default `guest`) and that password before showing any page. Empty it and run `docker compose up -d` to make the site public. `.env` is never committed.
