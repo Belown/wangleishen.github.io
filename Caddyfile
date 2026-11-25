@@ -13,6 +13,11 @@
 		respond "ok" 200
 	}
 
+	# GitHub Actions calls this after a push to main. Outside the site password: the deploy service checks its own secret.
+	handle /_deploy {
+		reverse_proxy deploy:9000
+	}
+
 	handle {
 		# Written at start by docker-entrypoint.sh: a password prompt when SITE_PASSWORD is set, else empty.
 		import /etc/caddy/auth.caddy

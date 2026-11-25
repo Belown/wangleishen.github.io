@@ -38,6 +38,14 @@ cp .env.example .env    # set HTTP_PORT and, while the site is private, SITE_PAS
 docker compose up -d --build
 ```
 
-Update: `git pull && docker compose up -d --build`. There is no automatic deploy on push.
+Update by hand: `git pull && docker compose up -d --build`.
+
+**Auto-deploy on push:** after every push to `main`, `.github/workflows/deploy.yml` calls `https://<domain>/_deploy`. The `deploy` service checks the secret, then pulls `main` into the server's checkout and rebuilds `web` and `records`. One-time setup:
+
+1. In the server's `.env`, set `DEPLOY_SECRET` (e.g. `openssl rand -hex 32`). The repo is public, so no GitHub token is needed; if it turns private, also set `GITHUB_TOKEN` (fine-grained, this repo only, Contents read-only).
+2. On GitHub: Settings → Secrets and variables → Actions → add the secret `DEPLOY_SECRET` with the same value. If the domain is not wangleishen.com, add the variable `DEPLOY_URL`.
+3. On the server: `docker compose --profile autodeploy up -d --build`.
+
+Follow deploys with `docker compose logs -f deploy`; the Actions tab shows each call, and Run workflow there deploys again. The service never recreates itself, so after a change to the `deploy` service run step 3 again. If the server's checkout has changes of its own, the pull stops and the log says so.
 
 While `SITE_PASSWORD` is set, the browser asks for a user name (`SITE_USER`, default `guest`) and that password before showing any page. Empty it and run `docker compose up -d` to make the site public. `.env` is never committed.
