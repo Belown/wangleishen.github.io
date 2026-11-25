@@ -1,21 +1,18 @@
 // The deploy service (docker compose --profile autodeploy up -d). After a push to main, GitHub Actions
 // (.github/workflows/deploy.yml) POSTs to /_deploy; Caddy passes that here, and this pulls main and rebuilds.
-// The request must carry "Authorization: Bearer <DEPLOY_SECRET>". The repo is public; if it turns private,
+// The request needs no secret: it only says "look at GitHub now", and what gets deployed is always GitHub's main,
+// so anyone calling it can at most make the server check again (runs are queued, never parallel). The repo is public; if it turns private,
 // set GITHUB_TOKEN (fine-grained: this repo, Contents read-only) and the pull uses it. Local changes on the server stop the pull; that is logged.
 import { execFile } from 'node:child_process'
-import { createHash, timingSafeEqual } from 'node:crypto'
 import { statSync } from 'node:fs'
 import { createServer } from 'node:http'
 import { promisify } from 'node:util'
 
-const secret = process.env.DEPLOY_SECRET
 const token = process.env.GITHUB_TOKEN
-if (!secret) { console.error('Set DEPLOY_SECRET in .env.'); process.exit(1) }
 
 const log = (...m) => console.log(new Date().toISOString(), ...m)
 const hide = (s) => (token ? String(s).replaceAll(token, '***') : String(s))
 const sh = async (cmd, ...args) => (await promisify(execFile)(cmd, args, { maxBuffer: 64 << 20 })).stdout.trim()
-const sameSecret = (a) => timingSafeEqual(createHash('sha256').update(a).digest(), createHash('sha256').update(`Bearer ${secret}`).digest())
 
 // The project this container belongs to (named after the folder on the host), so compose here acts on the same containers.
 const project = await sh('docker', 'inspect', process.env.HOSTNAME, '--format', '{{ index .Config.Labels "com.docker.compose.project" }}')
@@ -35,7 +32,8 @@ async function deploy() {
   try {
     await sh('git', 'fetch', '-q', url, 'main')
     const next = await sh('git', 'rev-parse', '--short', 'FETCH_HEAD')
-    if (next === await sh('git', 'rev-parse', '--short', 'HEAD')) log(`already at ${next}`)
+    const has = await sh('git', 'merge-base', '--is-ancestor', 'FETCH_HEAD', 'HEAD').then(() => true, () => false)
+    if (has) log(`already has ${next}`)
     else {
       log(`deploying ${next}: ${await sh('git', 'log', '-1', '--format=%s', 'FETCH_HEAD')}`)
       await sh('git', 'merge', '-q', '--ff-only', 'FETCH_HEAD')
@@ -53,7 +51,7 @@ async function deploy() {
 }
 
 createServer((req, res) => {
-  if (req.method !== 'POST' || !sameSecret(req.headers.authorization ?? '')) return res.writeHead(404).end()
+  if (req.method !== 'POST') return res.writeHead(404).end()
   res.writeHead(202).end('deploying\n')
   deploy()
 }).listen(9000, () => log(`waiting for GitHub on :9000 (project ${project})`))

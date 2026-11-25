@@ -1,5 +1,5 @@
 # After every push to main, tell the server to pull and rebuild (the deploy service, scripts/deploy-hook.mjs).
-# Needs the repository secret DEPLOY_SECRET, the same value as in the server's .env. Run it by hand from the Actions tab.
+# Run it by hand from the Actions tab to deploy again.
 name: Deploy
 
 on:
@@ -15,8 +15,5 @@ jobs:
     steps:
       - name: Ask the server to deploy
         env:
-          SECRET: ${{ secrets.DEPLOY_SECRET }}
           URL: ${{ vars.DEPLOY_URL || 'https://wangleishen.com/_deploy' }}
-        run: |
-          [ -n "$SECRET" ] || { echo "::notice::DEPLOY_SECRET is not set, so the server was not asked to deploy."; exit 0; }
-          curl -fsS --retry 3 -X POST -H "Authorization: Bearer $SECRET" "$URL"
+        run: curl -fsS --retry 3 -X POST "$URL"

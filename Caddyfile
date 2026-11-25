@@ -13,7 +13,7 @@
 		respond "ok" 200
 	}
 
-	# GitHub Actions calls this after a push to main. Outside the site password: the deploy service checks its own secret.
+	# GitHub Actions calls this after a push to main. Outside the site password: it can only make the server check GitHub.
 	handle /_deploy {
 		reverse_proxy deploy:9000
 	}

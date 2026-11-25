@@ -40,12 +40,8 @@ docker compose up -d --build
 
 Update by hand: `git pull && docker compose up -d --build`.
 
-**Auto-deploy on push:** after every push to `main`, `.github/workflows/deploy.yml` calls `https://<domain>/_deploy`. The `deploy` service checks the secret, then pulls `main` into the server's checkout and rebuilds `web` and `records`. One-time setup:
+**Auto-deploy on push:** after every push to `main`, `.github/workflows/deploy.yml` calls `https://<domain>/_deploy`, and the `deploy` service pulls `main` into the server's checkout and rebuilds `web` and `records`. The call needs no secret: it only makes the server look at GitHub, and only GitHub's `main` is ever deployed. One-time setup, on the server in the repo folder: `docker compose --profile autodeploy up -d --build` (the checkout's `origin` must be the https URL; if the domain is not wangleishen.com, set the Actions variable `DEPLOY_URL`).
 
-1. In the server's `.env`, set `DEPLOY_SECRET` to a long random string. On Windows (PowerShell): `$b = New-Object byte[] 32; [Security.Cryptography.RandomNumberGenerator]::Create().GetBytes($b); ($b | % { $_.ToString('x2') }) -join ''`; elsewhere `openssl rand -hex 32`. The repo is public, so no GitHub token is needed; if it turns private, also set `GITHUB_TOKEN` (fine-grained, this repo only, Contents read-only).
-2. On GitHub: Settings → Secrets and variables → Actions → add the secret `DEPLOY_SECRET` with the same value. If the domain is not wangleishen.com, add the variable `DEPLOY_URL`.
-3. On the server: `docker compose --profile autodeploy up -d --build`.
-
-Follow deploys with `docker compose logs -f deploy`; the Actions tab shows each call, and Run workflow there deploys again. The service never recreates itself, so after a change to the `deploy` service run step 3 again. If the server's checkout has changes of its own, the pull stops and the log says so.
+Follow deploys with `docker compose logs -f deploy`; the Actions tab shows each call, and Run workflow there deploys again. The service never recreates itself, so after a change to the `deploy` service run that command again. If the server's checkout has changes of its own, the pull stops and the log says so.
 
 While `SITE_PASSWORD` is set, the browser asks for a user name (`SITE_USER`, default `guest`) and that password before showing any page. Empty it and run `docker compose up -d` to make the site public. `.env` is never committed.

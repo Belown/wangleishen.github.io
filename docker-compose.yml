@@ -39,7 +39,6 @@ services:
     profiles: [autodeploy]
     restart: unless-stopped
     environment:
-      DEPLOY_SECRET: ${DEPLOY_SECRET:-}
       GITHUB_TOKEN: ${GITHUB_TOKEN:-}
     working_dir: /repo
     volumes:
