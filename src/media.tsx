@@ -40,7 +40,9 @@ export function Gallery({ folder, count, ratio = '4/3', cap }: { folder: string;
         {Array.from({ length: count }, (_, i) => {
           const file = `${folder}/${i + 1}.jpg`
           const url = asset(file)
-          return url ? <img key={file} src={url} alt="" style={{ aspectRatio: ratio }} loading="lazy" /> : <Ph key={file} kind={K.image} file={file} ratio={ratio} />
+          return url
+            ? <a key={file} href={url} target="_blank" rel="noreferrer"><img src={url} alt="" style={{ aspectRatio: ratio }} loading="lazy" /></a>
+            : <Ph key={file} kind={K.image} file={file} ratio={ratio} />
         })}
       </div>
       {cap && <figcaption className="cap">{cap}</figcaption>}
@@ -82,7 +84,7 @@ export function Pdf({ file, title, pages }: { file: string; title: T; pages: num
       <span className="pdf-sheet" aria-hidden="true">{Array.from({ length: 9 }, (_, i) => <i key={i} />)}</span>
       <span className="pdf-info">
         <b>{title}</b>
-        <span>{pages} pages · PDF</span>
+        <span>{pages} {pages === 1 ? 'page' : 'pages'} · PDF</span>
         {url ? <a href={url} target="_blank" rel="noreferrer">{'Open PDF'}</a> : <code>src/assets/{file}</code>}
       </span>
     </div>
@@ -93,7 +95,7 @@ export function Embed({ service, title }: { service: string; title: T }) {
   return (
     <div className="embed">
       <b>{title}</b>
-      <span>{service} · add the link in content.ts</span>
+      <span>{service} · add the link in src/content/works.ts</span>
     </div>
   )
 }
@@ -104,6 +106,23 @@ export function Quote({ text, cite }: { text: T; cite: T }) {
       {text}
       <cite>{cite}</cite>
     </blockquote>
+  )
+}
+
+export function YouTube({ id, cap }: { id: string; cap?: T }) {
+  return (
+    <figure className="fig">
+      <iframe
+        className="yt"
+        src={`https://www.youtube-nocookie.com/embed/${id}`}
+        title={cap ?? 'Video'}
+        loading="lazy"
+        allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+      />
+      {cap && <figcaption className="cap">{cap}</figcaption>}
+    </figure>
   )
 }
 
@@ -141,6 +160,7 @@ export function Blocks({ blocks }: { blocks: Block[] }) {
           case 'pdf': return <Pdf key={i} file={b.file} title={b.title} pages={b.pages} />
           case 'embed': return <Embed key={i} service={b.service} title={b.title} />
           case 'refs': return <Refs key={i} items={b.items} />
+          case 'youtube': return <YouTube key={i} id={b.id} cap={b.cap} />
         }
       })}
     </>

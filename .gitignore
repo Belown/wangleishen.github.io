@@ -24,3 +24,7 @@ Thumbs.db
 .impeccable/mocks/
 .impeccable/questions/
 **/.impeccable/hook.cache.json
+
+# Records data: written by `npm run records` locally and by the records service on the server
+public/data/
+data/

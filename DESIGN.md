@@ -83,7 +83,7 @@ spacing:
   item: "1.1rem"
   block: "2rem"
   page-max: "90rem"
-  measure: "40rem"
+  measure: "54rem"
 components:
   rail-link:
     textColor: "{colors.dim}"
@@ -173,7 +173,7 @@ Ink at higher alpha marks rising emphasis on a stroke: 16% for tag outlines, 35%
 - **Lead** (400, clamp 1.2–1.5rem, 1.45, max 18em): the one short line under a display heading.
 - **Subhead** (600, 1.5rem, 1.3): section headings inside case-study prose. Quotes use 500 at clamp 1.4–1.85rem.
 - **Row title** (500, 1.1875rem, 1.35): work titles in the index, and pager titles at 1.25rem.
-- **Body / Reading** (400 or 350, 1.0625rem, 1.7): UI text at 400. Paragraphs are set at 350 in Reading White, with a 40rem measure in prose and 46rem in profile rows.
+- **Body / Reading** (400 or 350, 1.0625rem, 1.7): UI text at 400. Paragraphs (prose and the profile bio) are set at 350 in Reading White, 1.125rem/1.75, with a 54rem measure in prose and 60rem in profile rows.
 - **Small** (0.9375rem, 1.6): profile row headings (600), publications, contact, summaries in the index.
 - **Label** (0.8125rem, 1.5): captions, metadata, rail links (0.875rem on wide screens), tags, citation links and placeholder text.
 - **Mono** (0.6875rem): placeholder file paths only.
@@ -187,9 +187,9 @@ Years and counts use tabular figures.
 
 - **Page frame:** content is limited to 90rem and centred. The side gutter is clamp(1rem, 4vw, 4rem). The body has bottom padding equal to the rail height plus the safe-area inset.
 - **Hero:** a two-column grid, 5fr text and 7fr stage, vertically centred. On the home page it fills the first viewport minus the rail. Work pages use a compact hero with the same grid and no minimum height. The piece is at most 34rem wide and shrinks with viewport height so it always fits on the first screen. Portraits are 22rem wide.
-- **Two-column reading:** the profile and the works index share a 14rem heading column (`--side`) beside a content column (46rem for profile rows; the index fills the remaining width so its rules end on the same right edge as the profile rows). In the index the heading column is sticky, at top 2rem.
+- **Two-column reading:** the profile and the works index share a 14rem heading column (`--side`) beside a content column (60rem for profile rows; the index fills the remaining width so its rules end on the same right edge as the profile rows). In the index the heading column is sticky, at top 2rem.
 - **Rows, not cards:** profile sections are rows with a 1.75rem vertical padding and a hairline above each. Index rows are an 11rem thumbnail beside the title, summary and metadata, with 1.1rem padding. Timeline and honours entries use an 8.5rem date column.
-- **Prose:** a 40rem measure. Figures break out to min(56rem, viewport minus gutters) and stay centred. Paragraphs are spaced 1.1rem apart and headings 2.75rem.
+- **Prose:** a 54rem measure. Figures break out to min(72rem, viewport minus gutters) and stay centred. Paragraphs are spaced 1.1rem apart and headings 2.75rem.
 - **Narrow (≤ 50rem):** everything collapses to one column. The rail shrinks to 3.75rem and centres its wrapping section links. A sticky mast at the top carries the name. The light moves to the centre and widens. Index thumbnails shrink to 6.5rem and the pager stacks.
 
 ## Elevation & Depth
@@ -239,7 +239,7 @@ Flat Lit Floor panels with the top-light inset and 1.1rem × 1.3rem padding. The
 A pill with a 35% ink outline, label size 0.875rem. On hover it fills with ink and the text turns Stage Black (0.2s). When the file is missing it shows a dashed outline in dim, with the expected path in ink code.
 
 ### Pager
-A two-column Newer/Older pair at 56rem, with a hairline above. Each side has a dim label and a 1.25rem title at 500. Below them, centred, is a dim link back to the section. The pager stacks on narrow screens.
+A two-column Newer/Older pair at 54rem, with a hairline above. Each side has a dim label and a 1.25rem title at 500. Below them, centred, is a dim link back to the section. The pager stacks on narrow screens.
 
 ### Motion
 Scroll-driven and linear, active only when `prefers-reduced-motion: no-preference` and `animation-timeline` is supported. Otherwise the page is static and still lit.
@@ -251,7 +251,7 @@ Scroll-driven and linear, active only when `prefers-reduced-motion: no-preferenc
 - State changes are colour-only transitions of 0.2s (0.3s for the thumbnail glow).
 
 ### Adding content
-Photos (`/photos`) are every image in `src/assets/photos/`, newest file name first, in a three-column masonry wall (CSS columns, no cropping); optional captions in `PHOTO_CAPTIONS`. Random (`/random`) is a single 40rem column of dated short posts from `RANDOM`, hairline between posts. Both stay in the navigation even when empty and show a quiet dim line instead. All text and structure lives in `src/content.ts`, in English: owner, timeline, publications, honours, sections and works. Each work's body is a list of blocks (p, h, img, gallery, video, audio, quote, pdf, embed, refs). Media files go in `src/assets/` at the exact path each placeholder shows. A file dropped there replaces its placeholder automatically, and any image extension works. A new work needs a `works/<slug>/cover.jpg` for its index thumbnail and hero. A section with no works stays out of the navigation until it gets one; an empty list (publications, honours) hides its block.
+Photos (`/photos`) are every image in `src/assets/photos/`, newest file name first, in a three-column masonry wall (CSS columns, no cropping); optional captions in `PHOTO_CAPTIONS`. Random (`/random`) is a single 54rem column of dated short posts from `RANDOM`, hairline between posts. Both stay in the navigation even when empty and show a quiet dim line instead. A work with `paper` filled in opens in paper mode: under the work title, the paper title as the lead, the authors (owner in bold) with superscript affiliations, the affiliations and venue in dim, and a row of bracketed paper links ([Paper] [DOI] then the work's own links; a missing one sits in dim). The page then ends with a Publication block: the citation, [DOI] [PDF], the abstract and a BibTeX box with a Copy button, each shown only when given. The contact card (`/card`) is a ticket standing in the light: matte card body with the name, role and contact rows, a dashed perforation with punched notches, and a stub carrying a QR code of the card's own URL (light tile, dark modules, so any camera reads it). On narrow screens the stub moves below the body. "Add to Contacts" builds a vCard from `OWNER` on click, with the site's own URL and, when present, the portrait. All text and structure lives in `src/content/`, in English: owner, timeline, publications, honours, sections and works. Each work's body is a list of blocks (p, h, img, gallery, video, audio, quote, pdf, embed, refs). Media files go in `src/assets/` at the exact path each placeholder shows. A file dropped there replaces its placeholder automatically, and any image extension works. A new work needs a `works/<slug>/cover.jpg` for its index thumbnail and hero. A section with no works stays out of the navigation until it gets one; an empty list (publications, honours) hides its block.
 
 ## Do's and Don'ts
 

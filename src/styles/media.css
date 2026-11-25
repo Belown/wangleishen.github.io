@@ -1,0 +1,22 @@
+/* ---------- Placeholders: a matte panel standing in until the file exists ---------- */
+
+.ph {
+  position: relative; width: 100%;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: clamp(0.9rem, 2.5%, 1.4rem);
+  background: linear-gradient(180deg, #242327 0%, #18181a 46%, #141416 100%);
+  box-shadow: inset 0 1px 0 rgb(var(--warm) / 0.12);
+}
+.ph-tag { display: flex; flex-direction: column; gap: 0.2rem; font-size: 0.75rem; line-height: 1.4; color: var(--dim); }
+.ph-kind { color: var(--ink); font-weight: 500; letter-spacing: 0.01em; }
+.ph-path { font-family: var(--mono); font-size: 0.6875rem; word-break: break-all; }
+.ph-mid {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem;
+  font-size: 0.8125rem; color: var(--dim);
+}
+.ph-mid .icon { width: 1.75rem; height: 1.75rem; color: var(--ink); }
+
+.fig img, .fig video { display: block; width: 100%; height: auto; object-fit: cover; }
+.fig .yt { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; background: var(--floor); }
+.cap { margin-top: 0.75rem; font-size: 0.8125rem; line-height: 1.5; color: var(--dim); }
+

@@ -1,0 +1,31 @@
+/* Records: square sleeves on a shelf */
+.shelf { list-style: none; margin: 0 auto; max-width: 90rem; padding: 0 var(--gutter) 6rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr)); gap: clamp(1.5rem, 3vw, 2.5rem) clamp(0.75rem, 1.5vw, 1.25rem); }
+.shelf-strip { margin: 0; padding: 0; max-width: none; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(0.5rem, 1vw, 1rem); }
+.sleeve { display: block; aspect-ratio: 1; box-shadow: 0 18px 30px -18px rgb(0 0 0 / 0.9), inset 0 1px 0 rgb(var(--warm) / 0.2); background: linear-gradient(180deg, #232226, #141416); }
+.sleeve img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.sleeve-blank { display: grid; place-items: center; height: 100%; font-size: 0.75rem; color: var(--dim); }
+.rec-title { margin: 0.75rem 0 0; font-size: 0.9375rem; line-height: 1.35; color: var(--ink); }
+.rec-meta { margin: 0.15rem 0 0; font-size: 0.8125rem; line-height: 1.4; color: var(--dim); }
+.shelf-strip .rec-title { font-size: 0.8125rem; }
+.shelf-strip .rec-meta { font-size: 0.75rem; }
+a.sleeve { transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1); }
+a.sleeve:hover { transform: translateY(-4px); }
+@media (prefers-reduced-motion: reduce) { a.sleeve { transition: none; } a.sleeve:hover { transform: none; } }
+
+/* One record */
+.record-top { max-width: 72rem; margin: 0 auto; padding: clamp(4rem, 12vh, 7rem) var(--gutter) 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+.record-sleeve { box-shadow: 0 3rem 4rem -2.5rem rgb(0 0 0 / 0.95), 0 1rem 2rem -1rem rgb(0 0 0 / 0.7); }
+.record-title { margin: 0; text-wrap: balance; word-break: keep-all; overflow-wrap: anywhere; font-size: clamp(2rem, 1.3rem + 2.4vw, 3.25rem); font-weight: 600; letter-spacing: -0.025em; line-height: 1.1; }
+.record-artist { margin: 0.6rem 0 0; font-size: 1.1875rem; color: var(--body); }
+.record-facts { margin: 2rem 0 1.5rem; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 0.6rem 1.5rem; font-size: 0.9375rem; }
+.record-facts > div { display: contents; }
+.record-facts dt { color: var(--dim); }
+.record-facts dd { margin: 0; color: var(--body); }
+.tracks { max-width: 54rem; margin: 0 auto; padding: clamp(3.5rem, 9vh, 5rem) var(--gutter) 0; box-sizing: content-box; }
+.tracks ol { list-style: none; margin: 1rem 0 0; padding: 0; }
+.tracks li { display: grid; grid-template-columns: 2.75rem minmax(0, 1fr) auto; gap: 1rem; padding: 0.8rem 0; border-top: 1px solid var(--hair); font-size: 1rem; color: var(--ink); }
+.tracks li .num { color: var(--dim); font-size: 0.875rem; }
+@media (max-width: 48rem) { .record-top { grid-template-columns: minmax(0, 1fr); } .record-sleeve { width: min(100%, 26rem); } }
+
+@media (max-width: 40rem) { .shelf-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+

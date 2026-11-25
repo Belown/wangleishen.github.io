@@ -10,3 +10,29 @@ services:
       SITE_PASSWORD: ${SITE_PASSWORD:-}
     ports:
       - "127.0.0.1:${HTTP_PORT:?set HTTP_PORT in .env}:80"
+    volumes:
+      - records:/srv/data:ro
+
+  # Refreshes the Records page from Discogs every 6 hours into the volume Caddy serves at /data/.
+  # Without DISCOGS_USER it only logs a reminder; the page then shows its sample layout.
+  records:
+    image: node:22-alpine
+    restart: unless-stopped
+    environment:
+      DISCOGS_USER: ${DISCOGS_USER:-}
+      DISCOGS_TOKEN: ${DISCOGS_TOKEN:-}
+      RECORDS_DIR: /data
+      RAW_DIR: /raw
+      COVERS_DIR: /app/record-covers
+    volumes:
+      - ./scripts/discogs.mjs:/app/discogs.mjs:ro
+      # Covers chosen by hand, replacing Discogs' (record-covers/<release id>.jpg).
+      - ./record-covers:/app/record-covers:ro
+      - records:/data
+      # Every Discogs response in full, kept out of what Caddy serves.
+      - records-raw:/raw
+    command: ["sh", "-c", "while true; do node /app/discogs.mjs; sleep 21600; done"]
+
+volumes:
+  records:
+  records-raw:

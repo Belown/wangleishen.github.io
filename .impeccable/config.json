@@ -106,7 +106,9 @@
         "rule": "broken-image",
         "value": "*",
         "files": [
-          "src/pages.tsx"
+          "src/pages/shared.tsx",
+          "src/pages/home.tsx",
+          "src/pages/random.tsx"
         ],
         "createdAt": "2026-11-24T21:03:50.766Z",
         "reason": "Claude: <Img>/<Gallery> are the placeholder components; they render a labelled placeholder until the asset exists in src/assets (coordinator confirmed expected)"
@@ -115,7 +117,7 @@
         "rule": "design-system-font",
         "value": "name sc",
         "files": [
-          "src/styles.css"
+          "src/styles/rail.css"
         ],
         "createdAt": "2026-11-24T22:18:10.914Z",
         "reason": "Claude: user asked to show their Chinese name 沈王磊 on the home page; Name SC is a 3-glyph Noto Sans SC subset for just that line, documented in DESIGN.md"

@@ -1,0 +1,5 @@
+/* ---------- About page, 404 ---------- */
+
+.about .profile { padding-top: clamp(3rem, 10vh, 6rem); }
+.about .profile-title { font-size: clamp(2.75rem, 1.8rem + 3.4vw, 4.75rem); }
+

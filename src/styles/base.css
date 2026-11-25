@@ -1,0 +1,91 @@
+/* Hanken Grotesk, self-hosted (variable: one file per subset covers every weight). */
+@font-face {
+  font-family: "Hanken Grotesk";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/hanken-grotesk-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Hanken Grotesk";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/hanken-grotesk-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --stage: #0b0b0c;
+  --floor: #1c1c1f;
+  --ink: #f2f2f0;
+  --dim: #9a9aa0;
+  --body: #d8d8d6; /* long-form reading text: a step below titles in ink as well as weight */
+  --hair: rgb(242 242 240 / 0.1);
+  --warm: 255 236 212; /* the colour of the one light */
+  --sans: "Hanken Grotesk", system-ui, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --gutter: clamp(1rem, 4vw, 4rem);
+  --rail: 4rem;
+  --side: 14rem; /* the heading column of the profile */
+  color-scheme: dark;
+  scrollbar-color: #3a3a3f var(--stage);
+  scrollbar-width: thin;
+  accent-color: var(--ink);
+  caret-color: var(--ink);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; overflow-x: clip; }
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background: var(--stage);
+  color: var(--ink);
+  font: 400 1.0625rem/1.7 var(--sans);
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-bottom: calc(var(--rail) + env(safe-area-inset-bottom));
+}
+
+::selection { background: var(--ink); color: var(--stage); }
+
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; border-radius: 2px; }
+
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.22em; }
+b, strong { font-weight: 600; }
+
+h1, h2, h3, p, dl, dd, figure, blockquote, ul, ol { margin: 0; }
+
+code { font-family: var(--mono); font-size: 0.82em; word-break: break-all; }
+
+.num { font-variant-numeric: tabular-nums; }
+.muted { color: var(--dim); }
+
+/* Chinese breaks only between phrases (at punctuation or spaces) in short display lines. */
+.keep { word-break: keep-all; overflow-wrap: anywhere; text-wrap: balance; }
+
+.skip {
+  position: fixed; left: var(--gutter); top: -4rem; z-index: 30;
+  padding: 0.6rem 0.9rem; background: var(--ink); color: var(--stage); text-decoration: none; font-size: 0.875rem;
+}
+.skip:focus { top: 1rem; }
+
+#main, .mast { position: relative; z-index: 1; }
+
+/* ---------- The light: one soft warm source above the featured work ---------- */
+
+.light { /* belongs to the first screen: it scrolls away with the hero instead of hanging over the reading room */
+  --lx: 68%;
+  position: absolute; top: 0; left: 0; right: 0; height: 130svh; z-index: 0; pointer-events: none;
+  transform-origin: var(--lx) 0;
+  opacity: 0.9;
+  background:
+    radial-gradient(ellipse 30vw 60vh at var(--lx) -4vh, rgb(var(--warm) / 0.2), rgb(var(--warm) / 0.09) 42%, rgb(var(--warm) / 0) 76%),
+    radial-gradient(ellipse 24vw 24vh at var(--lx) 30vh, rgb(var(--warm) / 0.05), rgb(var(--warm) / 0) 70%);
+}
+

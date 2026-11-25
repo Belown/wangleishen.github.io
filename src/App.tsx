@@ -1,7 +1,15 @@
 import { useEffect } from 'react'
 import { BrowserRouter, Link, NavLink, Route, Routes, useLocation } from 'react-router'
 import { ABOUT_NAME, OWNER, SECTIONS, SECTION_KEYS, workBySlug } from './content'
-import { About, Home, NotFound, Photos, Random, SectionPage, WorkPage } from './pages'
+import { About } from './pages/about'
+import { Card } from './pages/card'
+import { Home } from './pages/home'
+import { NotFound } from './pages/not-found'
+import { Photos } from './pages/photos'
+import { Random } from './pages/random'
+import { RecordPage, Records } from './pages/records'
+import { SectionPage } from './pages/section'
+import { WorkPage } from './pages/work'
 
 function Owner() {
   return (
@@ -30,6 +38,7 @@ function Rail() {
               </li>
             ))}
             <li><NavLink to="/photos">Photos</NavLink></li>
+            <li><NavLink to="/records">Records</NavLink></li>
             <li><NavLink to="/random">Random</NavLink></li>
             <li>
               <NavLink to="/about">{ABOUT_NAME}</NavLink>
@@ -64,8 +73,11 @@ export default function App() {
           ))}
           <Route path="/work/:slug" element={<WorkPage />} />
           <Route path="/photos" element={<Photos />} />
+          <Route path="/records" element={<Records />} />
+          <Route path="/records/:id" element={<RecordPage />} />
           <Route path="/random" element={<Random />} />
           <Route path="/about" element={<About />} />
+          <Route path="/card" element={<Card />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

@@ -1,0 +1,43 @@
+/* ---------- Works index: the same two columns as the profile ---------- */
+
+.works {
+  max-width: 90rem; margin: 0 auto; padding: clamp(2.5rem, 7vh, 4.5rem) var(--gutter) 4rem;
+  display: grid; grid-template-columns: var(--side) minmax(0, 1fr); gap: 1rem clamp(2rem, 5vw, 5rem); align-items: start;
+}
+.works-head { position: sticky; top: 2rem; }
+.works-title { font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem); font-weight: 600; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 0.75rem; }
+
+.filter { display: flex; flex-direction: column; align-items: flex-start; }
+.filter button {
+  font: inherit; font-size: 0.875rem; color: var(--dim); background: none; border: 0; cursor: pointer;
+  min-height: 2.5rem; padding: 0; transition: color 0.2s;
+}
+.filter button:hover { color: var(--ink); }
+.filter button[aria-pressed="true"] { color: var(--ink); text-decoration: underline; text-underline-offset: 0.55em; }
+.count { margin-left: 0.4em; font-size: 0.75rem; color: var(--dim); }
+
+.rows { list-style: none; padding: 0; border-bottom: 1px solid var(--hair); }
+.rows li { border-top: 1px solid var(--hair); }
+.row-link {
+  display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 1.75rem; align-items: center;
+  padding: 1.1rem 0; text-decoration: none;
+}
+.row-main { display: flex; flex-direction: column; gap: 0.2rem; }
+.row-title { font-size: 1.1875rem; font-weight: 500; line-height: 1.35; letter-spacing: -0.01em; }
+.row-sum { font-size: 0.9375rem; line-height: 1.5; color: var(--dim); }
+.row-meta { margin-top: 0.4rem; font-size: 0.8125rem; line-height: 1.5; color: var(--dim); }
+.row-meta .dot { margin: 0 0.45em; }
+.row-link:hover .row-title { text-decoration: underline; text-underline-offset: 0.22em; }
+
+.thumb .fig { position: relative; }
+.thumb .fig::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; transition: opacity 0.3s;
+  background: linear-gradient(180deg, rgb(var(--warm) / 0.12), rgb(var(--warm) / 0) 45%);
+  opacity: 0.6;
+}
+.row-link:hover .thumb .fig::after { opacity: 1; }
+.thumb .ph, .thumb img { box-shadow: 0 0.9rem 1rem -0.7rem rgb(0 0 0 / 0.95); }
+.thumb .ph { padding: 0.5rem 0.6rem; }
+.thumb .ph-path { display: none; }
+.thumb .ph-kind { font-size: 0.6875rem; font-weight: 400; color: var(--dim); }
+

@@ -1,0 +1,124 @@
+/* ---------- Type ---------- */
+
+.display {
+  font-size: clamp(3rem, 1.9rem + 4.4vw, 6rem);
+  font-weight: 600; line-height: 0.98; letter-spacing: -0.035em;
+}
+
+.line {
+  margin-top: 1.5rem; max-width: 18em;
+  font-size: clamp(1.2rem, 1.05rem + 0.55vw, 1.5rem); line-height: 1.45;
+}
+.sample { margin-top: 1rem; font-size: 0.8125rem; line-height: 1.55; color: var(--dim); max-width: 44em; word-break: keep-all; overflow-wrap: anywhere; text-wrap: pretty; }
+.hero .sample { margin-top: 1.5rem; }
+
+
+/* ---------- Hero: one work in the light ---------- */
+
+.hero {
+  position: relative; max-width: 90rem; margin: 0 auto;
+  min-height: calc(100svh - var(--rail));
+  padding: clamp(2rem, 6vh, 4rem) var(--gutter);
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  align-items: center; gap: clamp(2rem, 5vw, 6rem);
+  overflow-x: clip; /* the floor pool spreads wider than the piece; keep it off the page edge */
+}
+.hero.compact { min-height: 0; padding-block: clamp(3rem, 9vh, 5.5rem) clamp(4rem, 9vh, 5.5rem); }
+
+.hero-stage { display: flex; flex-direction: column; align-items: center; }
+
+.piece {
+  position: relative; isolation: isolate; display: block;
+  width: min(100%, 34rem, calc((100svh - var(--rail) - 15rem) * 4 / 3));
+  min-width: min(100%, 17rem);
+  text-decoration: none;
+}
+.hero.compact .piece { width: min(100%, 36rem); }
+.piece.portrait { width: min(100%, 22rem); }
+
+/* The lit floor: wider than the piece, warm at its centre, falling off into the stage. */
+.pool {
+  position: absolute; z-index: -2; left: -34%; right: -34%; bottom: -5.5rem; height: 10rem;
+  opacity: 0.9; pointer-events: none;
+  background:
+    radial-gradient(closest-side, rgb(var(--warm) / 0.26), rgb(var(--warm) / 0.13) 30%, rgb(var(--warm) / 0.05) 60%, rgb(var(--warm) / 0) 100%),
+    radial-gradient(closest-side, var(--floor), rgb(28 28 31 / 0.6) 55%, rgb(28 28 31 / 0));
+}
+/* Contact shadow where the piece meets the floor. */
+.piece::after {
+  content: ""; position: absolute; z-index: -1; left: 3%; right: 3%; bottom: -0.9rem; height: 1.8rem;
+  background: radial-gradient(closest-side, rgb(0 0 0 / 0.92), rgb(0 0 0 / 0));
+  filter: blur(3px);
+}
+/* Catch-light: the top edge is where the light lands first. */
+.catch {
+  position: absolute; z-index: 1; left: 0; right: 0; top: 0; height: 1px; pointer-events: none;
+  background: linear-gradient(90deg, rgb(var(--warm) / 0), rgb(var(--warm) / 0.5) 22%, rgb(var(--warm) / 0.75) 50%, rgb(var(--warm) / 0.5) 78%, rgb(var(--warm) / 0));
+}
+.catch::before {
+  content: ""; position: absolute; left: 12%; right: 12%; top: -1.25rem; height: 2.5rem;
+  background: radial-gradient(closest-side, rgb(var(--warm) / 0.12), rgb(var(--warm) / 0));
+}
+.piece .fig { position: relative; }
+.piece .fig > img, .piece .fig > .ph {
+  box-shadow: 0 2.5rem 3rem -2rem rgb(0 0 0 / 0.95), 0 0.75rem 1.5rem -0.5rem rgb(0 0 0 / 0.6);
+}
+.piece .fig::after { /* the light falling off down the face of the object */
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgb(var(--warm) / 0.14), rgb(var(--warm) / 0.03) 34%, rgb(0 0 0 / 0) 55%, rgb(0 0 0 / 0.24));
+}
+/* A real image keeps its own colours: the light still warms the top, but the falloff is gentler. */
+.piece .fig:has(> img)::after {
+  background: linear-gradient(180deg, rgb(var(--warm) / 0.1), rgb(var(--warm) / 0) 30%, rgb(0 0 0 / 0) 70%, rgb(0 0 0 / 0.08));
+}
+
+.caption {
+  margin-top: 2.75rem; text-align: center;
+  font-size: 0.8125rem; line-height: 1.5; color: var(--dim);
+}
+.caption a { color: var(--ink); text-decoration: none; }
+.caption a:hover { text-decoration: underline; }
+.dot { margin: 0 0.55em; }
+
+/* The signature: scrolling past the first screen, the light swells once and settles,
+   the work dims and the introduction rises. Without support, or with reduced motion,
+   everything stays static and lit. */
+@keyframes light-swell {
+  0% { opacity: 0.9; transform: none; }
+  30% { opacity: 1; transform: scale(1.14, 1.1); }
+  100% { opacity: 0.6; transform: none; }
+}
+@keyframes pool-swell {
+  0% { opacity: 0.9; transform: none; }
+  30% { opacity: 1; transform: scale(1.22, 1.12); }
+  100% { opacity: 0.5; transform: none; }
+}
+@keyframes piece-dim {
+  to { opacity: 0.3; filter: brightness(0.5); transform: translateY(-4vh); }
+}
+@keyframes text-dim {
+  to { opacity: 0.25; transform: translateY(-3vh); }
+}
+@keyframes mast-ground { to { background-color: var(--stage); } }
+@keyframes rise {
+  from { opacity: 0.2; transform: translateY(2.5rem); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .light { animation: light-swell linear both; animation-timeline: scroll(root); animation-range: 0px 100vh; }
+    .home .hero { view-timeline: --hero block; }
+    .home .hero .pool, .home .hero .catch {
+      animation: pool-swell linear both; animation-timeline: --hero; animation-range: exit 0% exit 70%;
+    }
+    .home .hero .fig { animation: piece-dim linear both; animation-timeline: --hero; animation-range: exit 5% exit 70%; }
+    .home .hero .hero-text, .home .hero .caption {
+      animation: text-dim linear both; animation-timeline: --hero; animation-range: exit 5% exit 65%;
+    }
+    /* Only the heading rises: an animated layer would lose subpixel antialiasing on the body text. */
+    .home .profile-head {
+      animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 80%;
+    }
+  }
+}
+

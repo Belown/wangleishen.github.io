@@ -1,0 +1,39 @@
+/* ---------- Contact card: a business card standing in the light ---------- */
+.card-page { overflow-x: clip; min-height: calc(100svh - var(--rail)); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3rem; padding: 5rem var(--gutter) 4rem; box-sizing: border-box; }
+.biz-stage { position: relative; width: min(100%, 34rem); }
+.biz-stage::before { /* the lit floor under the card */
+  content: ""; position: absolute; z-index: -1; left: -30%; right: -30%; bottom: -3.5rem; height: 7rem;
+  background: radial-gradient(closest-side, rgb(var(--warm) / 0.22), rgb(var(--warm) / 0.08) 45%, rgb(var(--warm) / 0) 100%);
+}
+.biz-name { margin: 0; font-size: clamp(1.35rem, 1rem + 1.8vw, 2rem); font-weight: 600; letter-spacing: -0.025em; line-height: 1.1; }
+.biz-role { margin: 0.4rem 0 0; font-size: clamp(0.75rem, 0.7rem + 0.3vw, 0.875rem); line-height: 1.45; color: var(--dim); }
+.qr { display: block; }
+.biz-save { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; width: min(100%, 26rem); text-align: center; }
+.biz-save p { margin: 0; font-size: 0.75rem; line-height: 1.55; color: var(--dim); }
+.card-link { display: inline-block; margin-bottom: 1rem; }
+/* The ticket */
+.ticket-stage { width: min(100%, 44rem); }
+.ticket {
+  --notch: 0.9rem;
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr) clamp(8.5rem, 26%, 12rem);
+  background: linear-gradient(180deg, #2a292d 0%, #18181a 60%, #121214 100%); border-radius: 0.5rem;
+  box-shadow: 0 2.5rem 3rem -2rem rgb(0 0 0 / 0.95), 0 0.75rem 1.5rem -0.5rem rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(var(--warm) / 0.35);
+  -webkit-mask: radial-gradient(circle var(--notch) at calc(100% - clamp(8.5rem, 26%, 12rem)) 0, #0000 98%, #000) top / 100% 51% no-repeat, radial-gradient(circle var(--notch) at calc(100% - clamp(8.5rem, 26%, 12rem)) 100%, #0000 98%, #000) bottom / 100% 51% no-repeat;
+  mask: radial-gradient(circle var(--notch) at calc(100% - clamp(8.5rem, 26%, 12rem)) 0, #0000 98%, #000) top / 100% 51% no-repeat, radial-gradient(circle var(--notch) at calc(100% - clamp(8.5rem, 26%, 12rem)) 100%, #0000 98%, #000) bottom / 100% 51% no-repeat;
+}
+.ticket-body { padding: clamp(1.25rem, 4vw, 2rem); min-width: 0; }
+.ticket-stub { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; padding: 1.25rem; border-left: 2px dashed rgb(242 242 240 / 0.18); }
+.ticket-stub .qr { width: 100%; border-radius: 0.25rem; }
+.ticket-stub span { font-size: 0.6875rem; color: var(--dim); text-align: center; }
+.ticket-rows { margin: 1.5rem 0 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 0.5rem 1.25rem; font-size: 0.875rem; }
+.ticket-rows > div { display: contents; }
+.ticket-rows dt { color: var(--dim); }
+.ticket-rows dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.ticket-rows a, .ticket-rows .mail { color: var(--ink); font: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-decoration-color: rgb(242 242 240 / 0.3); text-underline-offset: 0.2em; }
+@media (max-width: 34rem) {
+  .ticket { grid-template-columns: minmax(0, 1fr); -webkit-mask: none; mask: none; }
+  .ticket-stub { border-left: 0; border-top: 2px dashed rgb(242 242 240 / 0.18); }
+  .ticket-stub .qr { width: 60%; }
+}
+
+

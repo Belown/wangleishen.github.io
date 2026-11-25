@@ -1,0 +1,4 @@
+.missing { min-height: calc(100svh - var(--rail)); display: grid; place-content: center; justify-items: center; text-align: center; padding: 4rem var(--gutter); }
+.missing .line { color: var(--dim); }
+.missing .text-link { display: inline-block; margin-top: 2rem; padding: 0.5rem 0; }
+

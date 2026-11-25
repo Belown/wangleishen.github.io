@@ -6,3 +6,5 @@ archive
 .env
 .env.*
 Dockerfile
+public/data
+data

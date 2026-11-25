@@ -1,0 +1,11 @@
+/* Home glimpses of Photos and Random */
+.glimpse { padding-top: 1.5rem; }
+.see-all { display: inline-block; padding: 0.5rem 0; font-size: 0.875rem; color: var(--dim); text-underline-offset: 0.3em; }
+.see-all:hover { color: var(--ink); }
+.see-all::after { content: " →"; }
+.photo-strip { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(0.5rem, 1vw, 1rem); }
+.photo-strip img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.feed.compact { max-width: none; margin: 0; padding: 0; }
+.feed.compact li { padding: 1.1rem 0; }
+.feed.compact p { font-size: 1.0625rem; }
+

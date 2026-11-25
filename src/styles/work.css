@@ -1,0 +1,96 @@
+/* ---------- Work page ---------- */
+
+.work-title { font-size: clamp(2.6rem, 1.7rem + 3.6vw, 5rem); }
+
+.paper-head .line { max-width: 22em; }
+.paper-head .authors { margin-top: 1.25rem; font-size: 1rem; line-height: 1.5; color: var(--body); }
+.paper-head .authors b { color: var(--ink); font-weight: 600; }
+.paper-head sup, .publication sup { font-size: 0.65em; color: var(--dim); margin-left: 0.1em; }
+.paper-head .affs { display: flex; flex-wrap: wrap; gap: 0 1rem; margin-top: 0.3rem; font-size: 0.8125rem; color: var(--dim); }
+.paper-head .mentors { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 0 1rem; margin-top: 0.75rem; font-size: 0.8125rem; line-height: 1.6; color: var(--body); }
+.paper-head .mentors-label { color: var(--dim); }
+.paper-head .mentors a { color: var(--ink); text-decoration: underline; text-decoration-color: rgb(242 242 240 / 0.35); text-underline-offset: 0.2em; }
+.paper-head .mentors a:hover { text-decoration-color: var(--ink); }
+.paper-head .mentors ul { list-style: none; margin: 0; padding: 0; }
+.paper-head .mentors .dim { color: var(--dim); }
+.paper-head .venue { margin-top: 0.5rem; font-size: 0.9375rem; color: var(--ink); }
+.paper-links { display: flex; flex-wrap: wrap; gap: 0 1.1rem; margin-top: 1rem; font-size: 0.9375rem; }
+.publication { border-top: 1px solid var(--hair); margin-top: 3rem; padding-top: 2.5rem; }
+.publication .pub-cite { line-height: 1.6; }
+.publication .pub-cite b { font-weight: 600; color: var(--ink); }
+.bibtex { margin-top: 1.5rem; }
+.bibtex-bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.bibtex-bar button { font: inherit; font-size: 0.8125rem; color: var(--dim); background: none; border: 1px solid var(--hair); border-radius: 999px; padding: 0.35rem 0.9rem; min-height: 2.25rem; cursor: pointer; }
+.bibtex-bar button:hover { color: var(--ink); border-color: rgb(242 242 240 / 0.3); }
+.bibtex pre { margin: 0.75rem 0 0; padding: 1rem 1.2rem; background: var(--floor); overflow-x: auto; font-family: var(--mono); font-size: 0.9375rem; line-height: 1.65; color: var(--body); }
+.facts { margin-top: 2rem; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 0.45rem 1.75rem; font-size: 0.875rem; line-height: 1.5; }
+.facts > div { display: contents; }
+.facts dt { color: var(--dim); }
+.facts a { text-decoration: underline; text-decoration-color: rgb(242 242 240 / 0.35); }
+.facts a:hover { text-decoration-color: var(--ink); }
+
+.prose { max-width: 54rem; margin: 0 auto; padding: clamp(1rem, 3vh, 2rem) var(--gutter) 1.5rem; box-sizing: content-box; }
+.prose > * + * { margin-top: 1.1rem; }
+.prose p { text-wrap: pretty; font-weight: 350; color: var(--body); font-size: 1.125rem; line-height: 1.75; }
+.prose > h2 {
+  margin-top: 2.75rem; margin-bottom: -0.35rem;
+  font-size: 1.5rem; font-weight: 600; line-height: 1.3; letter-spacing: -0.02em;
+  word-break: keep-all; overflow-wrap: anywhere; text-wrap: balance;
+}
+.prose .fig {
+  margin-block: 2rem;
+  width: min(72rem, calc(100vw - 2 * var(--gutter)));
+  margin-left: 50%; translate: -50% 0;
+}
+.prose .fig > img, .prose .fig .ph { box-shadow: 0 1.75rem 2.5rem -1.5rem rgb(0 0 0 / 0.9); }
+
+.gallery-grid { display: grid; gap: clamp(0.75rem, 1.5vw, 1.25rem); grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); align-items: start; }
+.gallery-grid > a { display: block; }
+.gallery-grid img { display: block; width: 100%; height: auto; }
+
+.audio, .pdf, .embed { margin-block: 1.75rem; padding: 1.1rem 1.3rem; background: var(--floor); box-shadow: inset 0 1px 0 rgb(var(--warm) / 0.08); }
+.audio { display: flex; flex-direction: column; gap: 0.6rem; }
+.audio-title { font-weight: 500; }
+.audio audio { width: 100%; }
+.audio-ph { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; font-size: 0.8125rem; color: var(--dim); }
+.audio-ph .icon { color: var(--ink); }
+
+.pdf { display: grid; grid-template-columns: 3.75rem minmax(0, 1fr); gap: 1.25rem; align-items: center; }
+.pdf-sheet { aspect-ratio: 3 / 4; padding: 0.55rem 0.45rem; display: flex; flex-direction: column; gap: 0.25rem; background: #2a2a2e; }
+.pdf-sheet i { display: block; height: 2px; background: rgb(242 242 240 / 0.22); }
+.pdf-sheet i:first-child { height: 3px; width: 70%; background: rgb(242 242 240 / 0.4); margin-bottom: 0.2rem; }
+.pdf-sheet i:last-child { width: 55%; }
+.pdf-info { display: flex; flex-direction: column; gap: 0.2rem; font-size: 0.8125rem; color: var(--dim); }
+.pdf-info b { font-size: 1rem; font-weight: 500; color: var(--ink); }
+.pdf-info a { color: var(--ink); }
+
+.embed { display: flex; flex-direction: column; gap: 0.3rem; }
+.embed b { font-weight: 500; }
+.embed > span { font-size: 0.8125rem; color: var(--dim); }
+
+.quote {
+  margin-block: 2.5rem;
+  font-size: clamp(1.4rem, 1.15rem + 0.9vw, 1.85rem); font-weight: 500; line-height: 1.4; letter-spacing: -0.015em;
+  word-break: keep-all; overflow-wrap: anywhere; text-wrap: balance;
+}
+.quote cite { display: block; margin-top: 1rem; font-size: 0.8125rem; font-weight: 400; font-style: normal; letter-spacing: 0; color: var(--dim); }
+
+.refs { margin-top: 2.5rem !important; padding-top: 1.25rem; border-top: 1px solid var(--hair); font-size: 0.8125rem; line-height: 1.6; color: var(--dim); }
+.refs h2 { font-size: 0.875rem; font-weight: 600; color: var(--ink); margin-bottom: 0.5rem; }
+.refs ol { padding-left: 1.25rem; }
+.refs li + li { margin-top: 0.35rem; }
+
+.pager {
+  max-width: 54rem; margin: 2.5rem auto 0; padding: 2rem var(--gutter) 3.5rem; box-sizing: content-box;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 2rem;
+  border-top: 1px solid var(--hair);
+}
+.pager a { text-decoration: none; }
+.pager-prev, .pager-next { display: flex; flex-direction: column; gap: 0.3rem; padding: 0.5rem 0; }
+.pager-next { text-align: right; align-items: flex-end; }
+.pager-label { font-size: 0.8125rem; color: var(--dim); }
+.pager-title { font-size: 1.25rem; font-weight: 500; letter-spacing: -0.01em; }
+.pager-prev:hover .pager-title, .pager-next:hover .pager-title { text-decoration: underline; text-underline-offset: 0.2em; }
+.pager-back { grid-column: 1 / -1; justify-self: center; margin-top: 1rem; padding: 0.5rem 0; font-size: 0.875rem; color: var(--dim); }
+.pager-back:hover { color: var(--ink); }
+

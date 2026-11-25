@@ -18,6 +18,8 @@
 		import /etc/caddy/auth.caddy
 		root * /srv
 		header /assets/* Cache-Control "public, max-age=31536000, immutable"
+		# Records data changes when the records service syncs; browsers check back each time.
+		header /data/* Cache-Control "no-cache"
 		# Client-side routes (/photos, /work/…) fall back to index.html.
 		try_files {path} /index.html
 		file_server

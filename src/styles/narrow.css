@@ -1,0 +1,52 @@
+/* ---------- Narrow screens ---------- */
+
+@media (max-width: 50rem) {
+  .photo-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  :root { --rail: 3.75rem; }
+  .wide-only { display: none; }
+  .narrow-only { display: flex; }
+  /* The header sticks, and gains its ground once the page moves. */
+  .mast {
+    position: sticky; top: 0; z-index: 9; align-items: center; justify-content: space-between;
+    padding: 0.25rem var(--gutter); background: var(--stage);
+  }
+  @supports (animation-timeline: scroll()) {
+    .mast { background: rgb(11 11 12 / 0); animation: mast-ground linear both; animation-timeline: scroll(root); animation-range: 0px 5rem; }
+  }
+
+  .light {
+    --lx: 50%;
+    background:
+      radial-gradient(ellipse 90vw 50vh at var(--lx) -2vh, rgb(var(--warm) / 0.16), rgb(var(--warm) / 0.06) 48%, rgb(var(--warm) / 0) 80%),
+      radial-gradient(ellipse 60vw 18vh at var(--lx) 36vh, rgb(var(--warm) / 0.05), rgb(var(--warm) / 0) 70%);
+  }
+
+  .rail-in { display: flex; height: auto; min-height: var(--rail); justify-content: center; padding-block: 0.5rem; }
+  .sections ul { flex-wrap: wrap; justify-content: center; gap: 0 1.1rem; }
+  .sections a { font-size: 0.8125rem; padding: 0.55rem 0; }
+
+  .hero { grid-template-columns: minmax(0, 1fr); align-content: start; gap: 2.75rem; padding-top: 1.5rem; }
+  .home .hero { min-height: calc(100svh - var(--rail) - 3.5rem); } /* the mast sits above it */
+  .hero.compact { padding-block: 1.5rem 3.5rem; }
+  .line { margin-top: 1rem; }
+  .piece { width: min(100%, 30rem); }
+  .pool { left: -12%; right: -12%; }
+  .caption { margin-top: 2.25rem; }
+
+  .row { grid-template-columns: minmax(0, 1fr); padding: 1.5rem 0; }
+  .timeline li, .honours li { grid-template-columns: 6.5rem minmax(0, 1fr); gap: 0 1rem; }
+  .pubs { padding-left: 1.25rem; }
+
+  .works { grid-template-columns: minmax(0, 1fr); }
+  .works-head { position: static; }
+  .filter { flex-direction: row; flex-wrap: wrap; gap: 0 0.7rem; }
+  .filter button { font-size: 0.8125rem; min-height: 2.75rem; }
+  .count { margin-left: 0.25em; }
+  .row-link { grid-template-columns: 6.5rem minmax(0, 1fr); gap: 1rem; align-items: start; padding: 0.9rem 0; }
+  .row-title { font-size: 1.0625rem; }
+  .row-sum { font-size: 0.875rem; }
+
+  .pager { grid-template-columns: minmax(0, 1fr); }
+  .pager-next { text-align: left; align-items: flex-start; }
+  .pager-back { justify-self: start; }
+}
